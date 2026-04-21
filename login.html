@@ -7,6 +7,7 @@
     <meta name="description" content="Login to your Instant Key account to access your orders, wishlist, and more."/>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="css/animations.css">
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -261,39 +262,296 @@
     </footer>
 
     <script>
-        // Toggle password visibility
-        document.getElementById('togglePassword').addEventListener('click', function() {
-            const password = document.getElementById('password');
-            const icon = this.querySelector('.material-symbols-outlined');
+        // Login with API Integration and Animations
+        let isLoginMode = true; // true for login, false for register
 
-            if (password.type === 'password') {
-                password.type = 'text';
-                icon.textContent = 'visibility_off';
-            } else {
-                password.type = 'password';
-                icon.textContent = 'visibility';
-            }
-        });
+        // Initialize login page
+        function initLoginPage() {
+            // Add page transition
+            document.body.classList.add('page-transition');
 
-        // Form submission
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            // Basic validation
-            if (!email || !password) {
-                alert('Please fill in all fields');
+            // Check if user is already logged in
+            if (localStorage.getItem('authToken')) {
+                InstantKeyAnimations.showNotification('Already logged in!', 'success');
+                setTimeout(() => {
+                    window.location.href = 'user_dashboard.html';
+                }, 1000);
                 return;
             }
 
-            // In a real app, this would make an API call
-            // For demo purposes, simulate login
-            alert('Login successful! Redirecting to dashboard...');
-            window.location.href = 'user_dashboard.html';
+            // Setup form interactions
+            setupFormToggle();
+            setupPasswordToggle();
+            setupFormSubmission();
+            setupSocialLogin();
+            setupForgotPassword();
+        }
+
+        // Setup form mode toggle (login/register)
+        function setupFormToggle() {
+            const toggleLinks = document.querySelectorAll('.form-toggle');
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const formTitle = document.querySelector('.form-title');
+
+            toggleLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    isLoginMode = !isLoginMode;
+
+                    if (isLoginMode) {
+                        loginForm.classList.remove('hidden');
+                        registerForm.classList.add('hidden');
+                        formTitle.textContent = 'Welcome Back';
+                        toggleLinks.forEach(l => l.textContent = "Don't have an account? Sign up");
+                    } else {
+                        loginForm.classList.add('hidden');
+                        registerForm.classList.remove('hidden');
+                        formTitle.textContent = 'Create Account';
+                        toggleLinks.forEach(l => l.textContent = 'Already have an account? Sign in');
+                    }
+
+                    // Animate form transition
+                    const activeForm = isLoginMode ? loginForm : registerForm;
+                    activeForm.classList.add('animate-fade-in');
+                });
+            });
+        }
+
+        // Setup password visibility toggle
+        function setupPasswordToggle() {
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.toggle-password')) {
+                    const btn = e.target.closest('.toggle-password');
+                    const input = btn.previousElementSibling;
+                    const icon = btn.querySelector('.material-symbols-outlined');
+
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        icon.textContent = 'visibility_off';
+                    } else {
+                        input.type = 'password';
+                        icon.textContent = 'visibility';
+                    }
+                }
+            });
+        }
+
+        // Setup form submission
+        function setupFormSubmission() {
+            // Login form
+            document.getElementById('loginForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+                const rememberMe = document.getElementById('rememberMe').checked;
+
+                // Validation
+                if (!email || !password) {
+                    InstantKeyAnimations.showNotification('Please fill in all fields', 'error');
+                    return;
+                }
+
+                if (!isValidEmail(email)) {
+                    InstantKeyAnimations.showNotification('Please enter a valid email', 'error');
+                    return;
+                }
+
+                // Show loading
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<div class="loading-spinner"></div>';
+                submitBtn.disabled = true;
+
+                try {
+                    let response;
+
+                    if (window.InstantKeyAPI) {
+                        // Try API login
+                        response = await window.InstantKeyAPI.login(email, password);
+                    } else {
+                        // Fallback demo login
+                        response = await demoLogin(email, password);
+                    }
+
+                    if (response.token) {
+                        // Store auth token
+                        localStorage.setItem('authToken', response.token);
+                        if (rememberMe) {
+                            localStorage.setItem('rememberMe', 'true');
+                        }
+
+                        InstantKeyAnimations.showNotification('Login successful!', 'success');
+
+                        // Redirect after animation
+                        setTimeout(() => {
+                            window.location.href = 'user_dashboard.html';
+                        }, 1500);
+                    } else {
+                        throw new Error('Invalid response');
+                    }
+
+                } catch (error) {
+                    console.error('Login error:', error);
+                    InstantKeyAnimations.showNotification(error.message || 'Login failed. Please try again.', 'error');
+                } finally {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+
+            // Register form
+            document.getElementById('registerForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const username = document.getElementById('regUsername').value.trim();
+                const email = document.getElementById('regEmail').value.trim();
+                const password = document.getElementById('regPassword').value;
+                const confirmPassword = document.getElementById('regConfirmPassword').value;
+                const acceptTerms = document.getElementById('acceptTerms').checked;
+
+                // Validation
+                if (!username || !email || !password || !confirmPassword) {
+                    InstantKeyAnimations.showNotification('Please fill in all fields', 'error');
+                    return;
+                }
+
+                if (!isValidEmail(email)) {
+                    InstantKeyAnimations.showNotification('Please enter a valid email', 'error');
+                    return;
+                }
+
+                if (password.length < 8) {
+                    InstantKeyAnimations.showNotification('Password must be at least 8 characters', 'error');
+                    return;
+                }
+
+                if (password !== confirmPassword) {
+                    InstantKeyAnimations.showNotification('Passwords do not match', 'error');
+                    return;
+                }
+
+                if (!acceptTerms) {
+                    InstantKeyAnimations.showNotification('Please accept the terms and conditions', 'error');
+                    return;
+                }
+
+                // Show loading
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<div class="loading-spinner"></div>';
+                submitBtn.disabled = true;
+
+                try {
+                    let response;
+
+                    if (window.InstantKeyAPI) {
+                        // Try API registration
+                        response = await window.InstantKeyAPI.register(username, email, password);
+                    } else {
+                        // Fallback demo registration
+                        response = await demoRegister(username, email, password);
+                    }
+
+                    if (response.token) {
+                        // Store auth token
+                        localStorage.setItem('authToken', response.token);
+                        InstantKeyAnimations.showNotification('Registration successful!', 'success');
+
+                        // Redirect after animation
+                        setTimeout(() => {
+                            window.location.href = 'user_dashboard.html';
+                        }, 1500);
+                    } else {
+                        throw new Error('Invalid response');
+                    }
+
+                } catch (error) {
+                    console.error('Registration error:', error);
+                    InstantKeyAnimations.showNotification(error.message || 'Registration failed. Please try again.', 'error');
+                } finally {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+
+        // Setup social login
+        function setupSocialLogin() {
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.social-login-btn')) {
+                    e.preventDefault();
+                    const provider = e.target.closest('.social-login-btn').dataset.provider;
+                    InstantKeyAnimations.showNotification(`${provider} login coming soon!`, 'info');
+                }
+            });
+        }
+
+        // Setup forgot password
+        function setupForgotPassword() {
+            const forgotLink = document.querySelector('.forgot-password');
+            if (forgotLink) {
+                forgotLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    InstantKeyAnimations.showNotification('Password reset coming soon!', 'info');
+                });
+            }
+        }
+
+        // Demo login function (fallback)
+        async function demoLogin(email, password) {
+            // Simulate API delay
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            // Demo credentials
+            if (email === 'demo@instantkey.com' && password === 'demo123') {
+                return {
+                    token: 'demo-token-' + Date.now(),
+                    user: { id: 1, username: 'Demo User', email: email }
+                };
+            } else {
+                throw new Error('Invalid email or password');
+            }
+        }
+
+        // Demo register function (fallback)
+        async function demoRegister(username, email, password) {
+            // Simulate API delay
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            return {
+                token: 'demo-token-' + Date.now(),
+                user: { id: Date.now(), username: username, email: email }
+            };
+        }
+
+        // Email validation
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Initialize when DOM and API are ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Wait for API to load
+            const checkAPI = setInterval(() => {
+                if (window.InstantKeyAPI) {
+                    clearInterval(checkAPI);
+                    initLoginPage();
+                }
+            }, 100);
+
+            // Fallback after 3 seconds
+            setTimeout(() => {
+                if (!window.InstantKeyAPI) {
+                    clearInterval(checkAPI);
+                    initLoginPage();
+                }
+            }, 3000);
         });
     </script>
+    <script src="js/api.js"></script>
 </body>
 </html></content>
 <parameter name="filePath">c:\Users\oianl\Desktop\progetto sportiello\ISTANT-KEY-progetto-scolastico-\login.html

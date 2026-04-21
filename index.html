@@ -7,7 +7,105 @@
     <meta name="description" content="Experience the kinetic pulse of instant gaming. Ultra-fast delivery in under 5 seconds. Premium digital game keys for PC, Console, and more."/>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="css/animations.css">
     <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#003d42",
+                        "primary-dim": "#00ec3b",
+                        "primary": "#9cff93",
+                        "tertiary-fixed": "#0eeafd",
+                        "on-error-container": "#ffd2c8",
+                        "on-primary-container": "#005a10",
+                        "on-secondary-fixed": "#003a42",
+                        "on-surface": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005c64",
+                        "surface-variant": "#262627",
+                        "primary-fixed-dim": "#00ec3b",
+                        "surface": "#0e0e0f",
+                        "surface-tint": "#9cff93",
+                        "on-secondary": "#004d57",
+                        "secondary-fixed-dim": "#00d7f0",
+                        "primary-container": "#00fc40",
+                        "tertiary-dim": "#00dbec",
+                        "on-tertiary": "#005b63",
+                        "tertiary-container": "#0eeafd",
+                        "on-error": "#450900",
+                        "background": "#0e0e0f",
+                        "error": "#ff7351",
+                        "inverse-surface": "#fcf8f9",
+                        "on-primary": "#006413",
+                        "outline-variant": "#484849",
+                        "secondary-container": "#006875",
+                        "on-primary-fixed-variant": "#006513",
+                        "on-secondary-container": "#e8fbff",
+                        "surface-container": "#1a191b",
+                        "primary-fixed": "#00fc40",
+                        "tertiary": "#8af2ff",
+                        "on-tertiary-container": "#005159",
+                        "surface-bright": "#2c2c2d",
+                        "surface-container-highest": "#262627",
+                        "surface-container-high": "#201f21",
+                        "error-container": "#b92902",
+                        "on-primary-fixed": "#00440a",
+                        "tertiary-fixed-dim": "#00dbec",
+                        "surface-dim": "#0e0e0f",
+                        "surface-container-lowest": "#000000",
+                        "on-surface-variant": "#adaaab",
+                        "secondary": "#00e3fd",
+                        "inverse-primary": "#006f16",
+                        "surface-container-low": "#131314",
+                        "on-secondary-fixed-variant": "#005964",
+                        "on-background": "#ffffff",
+                        "secondary-dim": "#00d4ec",
+                        "inverse-on-surface": "#565556",
+                        "outline": "#767576",
+                        "secondary-fixed": "#26e6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    "animation": {
+                        "fade-in": "fadeIn 0.5s ease-in-out",
+                        "slide-up": "slideInUp 0.5s ease-out",
+                        "scale-in": "scaleIn 0.3s ease-out",
+                        "bounce-in": "bounceIn 0.6s ease-out"
+                    },
+                    "keyframes": {
+                        "fadeIn": {
+                            "0%": { opacity: "0" },
+                            "100%": { opacity: "1" }
+                        },
+                        "slideInUp": {
+                            "0%": { opacity: "0", transform: "translateY(30px)" },
+                            "100%": { opacity: "1", transform: "translateY(0)" }
+                        },
+                        "scaleIn": {
+                            "0%": { opacity: "0", transform: "scale(0.9)" },
+                            "100%": { opacity: "1", transform: "scale(1)" }
+                        },
+                        "bounceIn": {
+                            "0%": { opacity: "0", transform: "scale(0.3)" },
+                            "50%": { opacity: "1", transform: "scale(1.05)" },
+                            "70%": { transform: "scale(0.9)" },
+                            "100%": { opacity: "1", transform: "scale(1)" }
+                        }
+                    }
+                },
+            },
+        }
+    </script>
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -437,7 +535,80 @@
                 window.location.href = `product_catalog.html?search=${query}`;
             }
         });
+
+        // Load dynamic content when API is available
+        async function loadNewArrivals() {
+            const grid = document.getElementById('new-arrivals-grid');
+            if (!grid) return;
+
+            try {
+                // Show loading
+                InstantKeyUI.showLoadingSpinner(grid);
+
+                // Try to load from API
+                if (window.InstantKeyAPI) {
+                    const products = await window.InstantKeyAPI.getProducts({ limit: 4, featured: true });
+                    InstantKeyUI.hideLoadingSpinner(grid);
+
+                    if (products && products.length > 0) {
+                        grid.innerHTML = products.map(product => InstantKeyUI.createProductCard(product)).join('');
+                        return;
+                    }
+                }
+
+                // Fallback to static content
+                InstantKeyUI.hideLoadingSpinner(grid);
+                grid.innerHTML = `
+                    <a href="product_details.html?id=alan-wake-2" class="game-card group animate-on-scroll">
+                        <div class="bg-surface-container-high rounded-xl overflow-hidden hover:bg-surface-container-highest transition-all duration-300 ring-1 ring-white/5 hover:ring-primary/20">
+                            <div class="relative">
+                                <img class="w-full aspect-[3/4] object-cover transition-transform duration-500" alt="Alan Wake 2 game cover" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=300&h=400&fit=crop&crop=center"/>
+                                <div class="absolute top-3 right-3 bg-primary text-on-primary px-2 py-1 font-label text-xs font-bold uppercase rounded">New</div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-headline font-bold text-lg mb-1">Alan Wake 2</h3>
+                                <p class="text-on-surface-variant text-sm mb-2">Remedy Entertainment</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-primary font-headline font-bold text-xl">$49.99</span>
+                                    <span class="text-on-surface-variant text-xs">STEAM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Add more static cards as fallback -->
+                `;
+
+            } catch (error) {
+                console.error('Error loading new arrivals:', error);
+                InstantKeyUI.hideLoadingSpinner(grid);
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add page transition effect
+            document.body.classList.add('page-transition');
+
+            // Load dynamic content
+            setTimeout(() => {
+                loadNewArrivals();
+            }, 500);
+
+            // Add scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        });
     </script>
+    <script src="js/api.js"></script>
 </body>
 </html></content>
 <parameter name="filePath">c:\Users\oianl\Desktop\progetto sportiello\ISTANT-KEY-progetto-scolastico-\index.html

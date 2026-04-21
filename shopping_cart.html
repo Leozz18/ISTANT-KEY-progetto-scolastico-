@@ -7,6 +7,7 @@
     <meta name="description" content="Review your shopping cart and proceed to checkout for instant game delivery."/>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="css/animations.css">
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -396,66 +397,343 @@
     </footer>
 
     <script>
-        // Cart functionality
-        function updateCartTotal() {
-            const cartItems = document.querySelectorAll('.cart-item');
-            let subtotal = 0;
-            let itemCount = 0;
+        // Shopping Cart with API Integration and Animations
+        let cartItems = [];
+        let cartTotal = 0;
 
-            cartItems.forEach(item => {
-                const quantity = parseInt(item.querySelector('.quantity').textContent);
-                const price = parseFloat(item.dataset.price);
-                subtotal += price * quantity;
-                itemCount += quantity;
-            });
+        // Initialize shopping cart
+        async function initShoppingCart() {
+            // Add page transition
+            document.body.classList.add('page-transition');
 
-            const tax = subtotal * 0.1; // 10% tax
-            const total = subtotal + tax;
+            // Load cart items
+            await loadCart();
 
-            // Update order summary
-            document.querySelector('.subtotal').textContent = `Subtotal (${itemCount} items)`;
-            document.querySelector('.subtotal-amount').textContent = `$${subtotal.toFixed(2)}`;
-            document.querySelector('.tax-amount').textContent = `$${tax.toFixed(2)}`;
-            document.querySelector('.total-amount').textContent = `$${total.toFixed(2)}`;
+            // Setup interactions
+            setupQuantityControls();
+            setupRemoveItems();
+            setupCheckout();
+            setupContinueShopping();
         }
 
-        // Quantity buttons
-        document.querySelectorAll('.quantity-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const item = this.closest('.cart-item');
-                const quantityEl = item.querySelector('.quantity');
-                let quantity = parseInt(quantityEl.textContent);
+        // Load cart from API or fallback
+        async function loadCart() {
+            const cartContainer = document.querySelector('.lg\\:col-span-2');
+            const orderSummary = document.querySelector('.lg\\:col-span-1');
+            const emptyCart = document.querySelector('.empty-cart');
 
-                if (this.dataset.action === 'increase') {
-                    quantity++;
-                } else if (this.dataset.action === 'decrease' && quantity > 1) {
-                    quantity--;
+            InstantKeyUI.showLoadingSpinner(cartContainer);
+
+            try {
+                let cart = null;
+
+                if (window.InstantKeyAPI && localStorage.getItem('authToken')) {
+                    // Try to load from API
+                    cart = await window.InstantKeyAPI.getCart();
                 }
 
-                quantityEl.textContent = quantity;
-                updateCartTotal();
+                if (!cart || cart.items.length === 0) {
+                    // Show empty cart or fallback to static items
+                    InstantKeyUI.hideLoadingSpinner(cartContainer);
+
+                    if (!cart || cart.items.length === 0) {
+                        // Check if there are static cart items
+                        const staticItems = document.querySelectorAll('.cart-item');
+                        if (staticItems.length === 0) {
+                            showEmptyCart();
+                            return;
+                        } else {
+                            // Use static items as fallback
+                            cartItems = Array.from(staticItems).map(item => ({
+                                id: item.dataset.id || Math.random().toString(36).substr(2, 9),
+                                product_id: item.dataset.productId || '1',
+                                title: item.querySelector('h3').textContent,
+                                price: parseFloat(item.dataset.price),
+                                quantity: parseInt(item.querySelector('.quantity').textContent),
+                                image_url: item.querySelector('img').src,
+                                platform: item.querySelector('.text-on-surface-variant').textContent.split('•')[1]?.trim() || 'Steam'
+                            }));
+                            updateCartDisplay();
+                            return;
+                        }
+                    }
+                }
+
+                cartItems = cart.items;
+                updateCartDisplay();
+
+            } catch (error) {
+                console.error('Error loading cart:', error);
+                InstantKeyUI.hideLoadingSpinner(cartContainer);
+                InstantKeyAnimations.showNotification('Error loading cart. Using cached data.', 'error');
+
+                // Fallback to static items
+                const staticItems = document.querySelectorAll('.cart-item');
+                if (staticItems.length > 0) {
+                    cartItems = Array.from(staticItems).map(item => ({
+                        id: item.dataset.id || Math.random().toString(36).substr(2, 9),
+                        product_id: item.dataset.productId || '1',
+                        title: item.querySelector('h3').textContent,
+                        price: parseFloat(item.dataset.price),
+                        quantity: parseInt(item.querySelector('.quantity').textContent),
+                        image_url: item.querySelector('img').src,
+                        platform: item.querySelector('.text-on-surface-variant').textContent.split('•')[1]?.trim() || 'Steam'
+                    }));
+                    updateCartDisplay();
+                } else {
+                    showEmptyCart();
+                }
+            }
+
+            InstantKeyUI.hideLoadingSpinner(cartContainer);
+        }
+
+        // Update cart display
+        function updateCartDisplay() {
+            const cartContainer = document.querySelector('.lg\\:col-span-2');
+            const orderSummary = document.querySelector('.lg\\:col-span-1');
+            const emptyCart = document.querySelector('.empty-cart');
+            const checkoutBtn = document.querySelector('.checkout-btn');
+
+            if (cartItems.length === 0) {
+                showEmptyCart();
+                return;
+            }
+
+            // Hide empty cart message
+            if (emptyCart) emptyCart.classList.add('hidden');
+
+            // Clear existing items
+            const existingItems = cartContainer.querySelectorAll('.cart-item');
+            existingItems.forEach(item => item.remove());
+
+            // Add cart items
+            cartItems.forEach((item, index) => {
+                const cartItemElement = createCartItemElement(item, index);
+                cartContainer.insertBefore(cartItemElement, orderSummary);
             });
-        });
 
-        // Remove items
-        document.querySelectorAll('.remove-item').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const item = this.closest('.cart-item');
-                item.remove();
-                updateCartTotal();
+            // Update order summary
+            updateOrderSummary();
 
-                // Check if cart is empty
-                const cartItems = document.querySelectorAll('.cart-item');
-                if (cartItems.length === 0) {
-                    document.querySelector('.empty-cart').classList.remove('hidden');
-                    document.querySelector('.checkout-btn').style.display = 'none';
+            // Show checkout button
+            if (checkoutBtn) checkoutBtn.style.display = 'block';
+        }
+
+        // Create cart item element
+        function createCartItemElement(item, index) {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'bg-surface-container-low p-6 rounded-xl border border-white/5 cart-item animate-on-scroll';
+            itemDiv.dataset.id = item.id;
+            itemDiv.dataset.productId = item.product_id;
+            itemDiv.dataset.price = item.price;
+            itemDiv.style.animationDelay = `${index * 0.1}s`;
+
+            itemDiv.innerHTML = `
+                <div class="flex gap-6">
+                    <div class="w-24 h-24 bg-surface-container-high rounded-lg overflow-hidden flex-shrink-0">
+                        <img class="w-full h-full object-cover" alt="${item.title}" src="${item.image_url || 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=96&h=96&fit=crop&crop=center'}"/>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="font-headline font-bold text-lg mb-1">${item.title}</h3>
+                                <p class="text-on-surface-variant text-sm">${item.developer || 'Developer'} • ${item.platform}</p>
+                            </div>
+                            <button class="text-on-surface-variant hover:text-error transition-colors remove-item btn-glow" data-item-id="${item.id}">
+                                <span class="material-symbols-outlined">delete</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <button class="w-8 h-8 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all quantity-btn btn-glow" data-action="decrease" data-item-id="${item.id}">
+                                    <span class="material-symbols-outlined text-sm">remove</span>
+                                </button>
+                                <span class="w-12 text-center font-medium quantity">${item.quantity}</span>
+                                <button class="w-8 h-8 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all quantity-btn btn-glow" data-action="increase" data-item-id="${item.id}">
+                                    <span class="material-symbols-outlined text-sm">add</span>
+                                </button>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-lg font-headline font-bold text-primary">$${(item.price * item.quantity).toFixed(2)}</div>
+                                ${item.original_price && item.original_price > item.price ? `<div class="text-on-surface-variant text-sm line-through">$${(item.original_price * item.quantity).toFixed(2)}</div>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            return itemDiv;
+        }
+
+        // Update order summary
+        function updateOrderSummary() {
+            const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const tax = subtotal * 0.1; // 10% tax
+            const total = subtotal + tax;
+            const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+            // Update summary elements
+            const subtotalElement = document.querySelector('.subtotal');
+            const subtotalAmountElement = document.querySelector('.subtotal-amount');
+            const taxAmountElement = document.querySelector('.tax-amount');
+            const totalAmountElement = document.querySelector('.total-amount');
+
+            if (subtotalElement) subtotalElement.textContent = `Subtotal (${itemCount} items)`;
+            if (subtotalAmountElement) subtotalAmountElement.textContent = `$${subtotal.toFixed(2)}`;
+            if (taxAmountElement) taxAmountElement.textContent = `$${tax.toFixed(2)}`;
+            if (totalAmountElement) totalAmountElement.textContent = `$${total.toFixed(2)}`;
+
+            cartTotal = total;
+        }
+
+        // Show empty cart
+        function showEmptyCart() {
+            const emptyCart = document.querySelector('.empty-cart');
+            const checkoutBtn = document.querySelector('.checkout-btn');
+
+            if (emptyCart) emptyCart.classList.remove('hidden');
+            if (checkoutBtn) checkoutBtn.style.display = 'none';
+
+            // Clear cart items
+            const cartItems = document.querySelectorAll('.cart-item');
+            cartItems.forEach(item => item.remove());
+        }
+
+        // Setup quantity controls
+        function setupQuantityControls() {
+            document.addEventListener('click', async (e) => {
+                if (e.target.closest('.quantity-btn')) {
+                    e.preventDefault();
+                    const btn = e.target.closest('.quantity-btn');
+                    const itemId = btn.dataset.itemId;
+                    const action = btn.dataset.action;
+
+                    const item = cartItems.find(item => item.id === itemId);
+                    if (!item) return;
+
+                    const oldQuantity = item.quantity;
+                    let newQuantity = oldQuantity;
+
+                    if (action === 'increase') {
+                        newQuantity++;
+                    } else if (action === 'decrease' && oldQuantity > 1) {
+                        newQuantity--;
+                    }
+
+                    if (newQuantity !== oldQuantity) {
+                        try {
+                            btn.classList.add('loading');
+
+                            if (window.InstantKeyAPI && localStorage.getItem('authToken')) {
+                                await window.InstantKeyAPI.updateCartItem(itemId, newQuantity);
+                            }
+
+                            item.quantity = newQuantity;
+                            updateCartDisplay();
+
+                            InstantKeyAnimations.showNotification('Quantity updated!', 'success');
+
+                        } catch (error) {
+                            console.error('Error updating quantity:', error);
+                            InstantKeyAnimations.showNotification('Error updating quantity', 'error');
+                        } finally {
+                            btn.classList.remove('loading');
+                        }
+                    }
                 }
             });
-        });
+        }
 
-        // Initialize cart total
-        updateCartTotal();
+        // Setup remove items
+        function setupRemoveItems() {
+            document.addEventListener('click', async (e) => {
+                if (e.target.closest('.remove-item')) {
+                    e.preventDefault();
+                    const btn = e.target.closest('.remove-item');
+                    const itemId = btn.dataset.itemId;
+
+                    try {
+                        btn.classList.add('loading');
+
+                        if (window.InstantKeyAPI && localStorage.getItem('authToken')) {
+                            await window.InstantKeyAPI.removeFromCart(itemId);
+                        }
+
+                        // Remove from local array
+                        cartItems = cartItems.filter(item => item.id !== itemId);
+                        updateCartDisplay();
+
+                        InstantKeyAnimations.showNotification('Item removed from cart', 'success');
+
+                        // Check if cart is now empty
+                        if (cartItems.length === 0) {
+                            showEmptyCart();
+                        }
+
+                    } catch (error) {
+                        console.error('Error removing item:', error);
+                        InstantKeyAnimations.showNotification('Error removing item', 'error');
+                    } finally {
+                        btn.classList.remove('loading');
+                    }
+                }
+            });
+        }
+
+        // Setup checkout
+        function setupCheckout() {
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.checkout-btn')) {
+                    e.preventDefault();
+
+                    if (cartItems.length === 0) {
+                        InstantKeyAnimations.showNotification('Your cart is empty', 'error');
+                        return;
+                    }
+
+                    if (window.InstantKeyAPI && localStorage.getItem('authToken')) {
+                        window.location.href = 'checkout.html';
+                    } else {
+                        InstantKeyAnimations.showNotification('Please login to checkout', 'error');
+                        setTimeout(() => {
+                            window.location.href = 'login.html';
+                        }, 2000);
+                    }
+                }
+            });
+        }
+
+        // Setup continue shopping
+        function setupContinueShopping() {
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.continue-shopping')) {
+                    e.preventDefault();
+                    window.location.href = 'product_catalog.html';
+                }
+            });
+        }
+
+        // Initialize when DOM and API are ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Wait for API to load
+            const checkAPI = setInterval(() => {
+                if (window.InstantKeyAPI) {
+                    clearInterval(checkAPI);
+                    initShoppingCart();
+                }
+            }, 100);
+
+            // Fallback after 3 seconds
+            setTimeout(() => {
+                if (!window.InstantKeyAPI) {
+                    clearInterval(checkAPI);
+                    initShoppingCart();
+                }
+            }, 3000);
+        });
     </script>
+    <script src="js/api.js"></script>
 </body>
 </html></content>
 <parameter name="filePath">c:\Users\oianl\Desktop\progetto sportiello\ISTANT-KEY-progetto-scolastico-\shopping_cart.html

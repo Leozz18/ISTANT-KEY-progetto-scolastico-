@@ -7,6 +7,7 @@
     <meta name="description" content="Browse our complete digital gaming catalog. Find PC games, console games, software, and subscriptions with instant delivery."/>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="css/animations.css">
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -509,136 +510,340 @@
     </footer>
 
     <script>
-        // Filter functionality
-        const filterCheckboxes = document.querySelectorAll('.filter-checkbox');
-        const filterPlatforms = document.querySelectorAll('.filter-platform');
-        const filterRatings = document.querySelectorAll('.filter-rating');
-        const productCards = document.querySelectorAll('.product-card');
-        const sortSelect = document.querySelector('.sort-select');
+        // Product Catalog with API Integration and Animations
+        let currentPage = 1;
+        let currentFilters = {};
+        let allProducts = [];
 
-        function applyFilters() {
-            const activeGenres = Array.from(filterCheckboxes)
-                .filter(cb => cb.querySelector('input').checked)
-                .map(cb => cb.querySelector('input').dataset.genre);
+        // Initialize catalog
+        async function initCatalog() {
+            // Add page transition
+            document.body.classList.add('page-transition');
 
-            const activePlatforms = Array.from(filterPlatforms)
-                .filter(btn => btn.classList.contains('active'))
+            // Parse URL parameters for initial filters
+            const urlParams = new URLSearchParams(window.location.search);
+            currentFilters = {
+                platform: urlParams.get('platform'),
+                category: urlParams.get('category'),
+                search: urlParams.get('search'),
+                genre: urlParams.get('genre')
+            };
+
+            // Load products
+            await loadProducts();
+
+            // Setup filters and interactions
+            setupFilters();
+            setupSearch();
+            setupSorting();
+            setupAddToCart();
+            setupLoadMore();
+
+            // Apply initial filters if any
+            if (Object.values(currentFilters).some(v => v)) {
+                applyFilters();
+            }
+        }
+
+        // Load products from API or fallback to static
+        async function loadProducts(page = 1, append = false) {
+            const productsGrid = document.querySelector('.products-grid');
+            const loadMoreBtn = document.querySelector('.load-more');
+
+            if (!append) {
+                InstantKeyUI.showLoadingSpinner(productsGrid);
+            }
+
+            try {
+                let products = [];
+
+                if (window.InstantKeyAPI) {
+                    // Try to load from API
+                    const filters = { ...currentFilters, page, limit: 12 };
+                    const response = await window.InstantKeyAPI.getProducts(filters);
+                    products = response || [];
+                }
+
+                if (products.length === 0 && !append) {
+                    // Fallback to static products (existing HTML)
+                    InstantKeyUI.hideLoadingSpinner(productsGrid);
+                    // Add animation classes to existing cards
+                    document.querySelectorAll('.product-card').forEach((card, index) => {
+                        card.classList.add('animate-on-scroll');
+                        card.style.animationDelay = `${index * 0.1}s`;
+                    });
+                    return;
+                }
+
+                if (!append) {
+                    // Clear existing products except featured
+                    const featuredCard = productsGrid.querySelector('.sm\\:col-span-2');
+                    productsGrid.innerHTML = featuredCard ? featuredCard.outerHTML : '';
+                }
+
+                // Add new products
+                products.forEach((product, index) => {
+                    const productCard = createProductCard(product, append ? allProducts.length + index : index);
+                    productsGrid.insertBefore(productCard, loadMoreBtn);
+                });
+
+                allProducts = append ? [...allProducts, ...products] : products;
+
+                if (products.length < 12) {
+                    loadMoreBtn.style.display = 'none';
+                } else {
+                    loadMoreBtn.style.display = 'block';
+                }
+
+            } catch (error) {
+                console.error('Error loading products:', error);
+                if (!append) {
+                    InstantKeyUI.hideLoadingSpinner(productsGrid);
+                    InstantKeyAnimations.showNotification('Error loading products. Using cached data.', 'error');
+                }
+            }
+
+            if (!append) {
+                InstantKeyUI.hideLoadingSpinner(productsGrid);
+            }
+        }
+
+        // Create product card element
+        function createProductCard(product, index) {
+            const card = document.createElement('div');
+            card.className = 'group bg-surface-container-low rounded-lg overflow-hidden flex flex-col hover:bg-surface-container-high transition-all duration-150 product-card animate-on-scroll';
+            card.dataset.genre = product.genre || 'action';
+            card.dataset.platform = product.platform || 'steam';
+            card.dataset.price = product.price;
+            card.dataset.rating = product.rating || 4;
+            card.style.animationDelay = `${index * 0.1}s`;
+
+            card.innerHTML = `
+                <a href="product_details.html?id=${product.id}" class="flex flex-col h-full">
+                    <div class="aspect-[3/4] relative overflow-hidden">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                             alt="${product.title}"
+                             src="${product.image_url || 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=300&h=400&fit=crop&crop=center'}"/>
+                        ${product.discount_percentage ? `<div class="absolute top-3 left-3 bg-error text-[9px] font-black px-2 py-0.5 rounded tracking-tighter">-${product.discount_percentage}%</div>` : ''}
+                        ${product.is_featured ? `<div class="absolute top-3 right-3 bg-primary text-[9px] font-black px-2 py-0.5 rounded tracking-tighter">NEW</div>` : ''}
+                    </div>
+                    <div class="p-4 flex flex-col gap-4 flex-grow">
+                        <div>
+                            <span class="text-[9px] font-black uppercase text-on-surface-variant tracking-[0.1em]">${product.platform}</span>
+                            <h4 class="text-sm font-bold mt-1 line-clamp-1">${product.title}</h4>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div class="flex flex-col">
+                                ${product.original_price && product.original_price > product.price ? `<span class="text-[10px] text-on-surface-variant line-through">$${product.original_price}</span>` : ''}
+                                <span class="text-lg font-black text-white">$${product.price}</span>
+                            </div>
+                            <button class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-90 add-to-cart btn-glow" data-product-id="${product.id}">
+                                <span class="material-symbols-outlined">shopping_cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+            `;
+
+            return card;
+        }
+
+        // Setup filters
+        function setupFilters() {
+            // Platform filters
+            document.querySelectorAll('.filter-platform').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    btn.classList.toggle('active');
+                    updateActiveFilters();
+                    applyFilters();
+                });
+            });
+
+            // Genre checkboxes
+            document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('click', function() {
+                    const input = this.querySelector('input');
+                    input.checked = !input.checked;
+                    updateCheckboxVisual(this, input.checked);
+                    updateActiveFilters();
+                    applyFilters();
+                });
+            });
+
+            // Rating filters
+            document.querySelectorAll('.filter-rating').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-rating').forEach(b => {
+                        b.classList.remove('active', 'text-primary-dim');
+                        b.classList.add('text-on-surface-variant');
+                    });
+                    btn.classList.add('active', 'text-primary-dim');
+                    btn.classList.remove('text-on-surface-variant');
+                    updateActiveFilters();
+                    applyFilters();
+                });
+            });
+        }
+
+        function updateCheckboxVisual(checkbox, isChecked) {
+            if (isChecked) {
+                checkbox.classList.remove('bg-surface-container-highest', 'border-outline-variant');
+                checkbox.classList.add('bg-primary-container', 'border-primary-container');
+                checkbox.innerHTML = '<input type="checkbox" class="hidden" data-genre="' + checkbox.querySelector('input').dataset.genre + '" checked><span class="material-symbols-outlined text-[12px] text-on-primary-container font-black">check</span>';
+            } else {
+                checkbox.classList.add('bg-surface-container-highest', 'border-outline-variant');
+                checkbox.classList.remove('bg-primary-container', 'border-primary-container');
+                checkbox.innerHTML = '<input type="checkbox" class="hidden" data-genre="' + checkbox.querySelector('input').dataset.genre + '">';
+            }
+        }
+
+        function updateActiveFilters() {
+            // Update current filters based on UI state
+            const activePlatforms = Array.from(document.querySelectorAll('.filter-platform.active'))
                 .map(btn => btn.dataset.platform);
 
-            const activeRating = Array.from(filterRatings)
-                .find(btn => btn.classList.contains('active'))?.dataset.rating;
+            const activeGenres = Array.from(document.querySelectorAll('.filter-checkbox input:checked'))
+                .map(input => input.dataset.genre);
 
-            productCards.forEach(card => {
+            const activeRating = document.querySelector('.filter-rating.active')?.dataset.rating;
+
+            currentFilters.platform = activePlatforms.length > 0 ? activePlatforms[0] : null;
+            currentFilters.genre = activeGenres.length > 0 ? activeGenres : null;
+            currentFilters.minRating = activeRating;
+        }
+
+        function applyFilters() {
+            const cards = document.querySelectorAll('.product-card');
+
+            cards.forEach(card => {
                 const cardGenre = card.dataset.genre;
                 const cardPlatform = card.dataset.platform;
-                const cardRating = card.dataset.rating;
+                const cardRating = parseInt(card.dataset.rating);
 
-                const genreMatch = activeGenres.length === 0 || activeGenres.includes(cardGenre);
-                const platformMatch = activePlatforms.length === 0 || activePlatforms.includes(cardPlatform);
-                const ratingMatch = !activeRating || parseInt(cardRating) >= parseInt(activeRating);
+                const genreMatch = !currentFilters.genre || currentFilters.genre.includes(cardGenre);
+                const platformMatch = !currentFilters.platform || currentFilters.platform === cardPlatform;
+                const ratingMatch = !currentFilters.minRating || cardRating >= parseInt(currentFilters.minRating);
 
-                if (genreMatch && platformMatch && ratingMatch) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
+                card.style.display = (genreMatch && platformMatch && ratingMatch) ? 'flex' : 'none';
+            });
+
+            // Animate visible cards
+            document.querySelectorAll('.product-card[style*="display: flex"]').forEach((card, index) => {
+                card.classList.add('animate-in');
+            });
+        }
+
+        // Setup search
+        function setupSearch() {
+            const searchInput = document.querySelector('input[placeholder*="Search"]');
+            if (searchInput) {
+                searchInput.addEventListener('input', debounce(() => {
+                    currentFilters.search = searchInput.value.trim() || null;
+                    loadProducts(1, false);
+                }, 300));
+            }
+        }
+
+        // Setup sorting
+        function setupSorting() {
+            const sortSelect = document.querySelector('.sort-select');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', () => {
+                    currentFilters.sort = sortSelect.value;
+                    loadProducts(1, false);
+                });
+            }
+        }
+
+        // Setup add to cart
+        function setupAddToCart() {
+            document.addEventListener('click', async (e) => {
+                if (e.target.closest('.add-to-cart')) {
+                    e.preventDefault();
+                    const btn = e.target.closest('.add-to-cart');
+                    const productId = btn.dataset.productId;
+
+                    try {
+                        btn.classList.add('loading');
+                        btn.innerHTML = '<div class="loading-spinner"></div>';
+
+                        if (window.InstantKeyAPI && localStorage.getItem('authToken')) {
+                            await window.InstantKeyAPI.addToCart(productId);
+                            InstantKeyAnimations.showNotification('Added to cart!', 'success');
+                        } else {
+                            // Fallback for demo
+                            InstantKeyAnimations.showNotification('Please login to add items to cart', 'error');
+                        }
+
+                        // Success animation
+                        btn.innerHTML = '<span class="material-symbols-outlined text-on-primary">check</span>';
+                        btn.classList.add('bg-primary', 'text-on-primary');
+
+                        setTimeout(() => {
+                            btn.innerHTML = '<span class="material-symbols-outlined">shopping_cart</span>';
+                            btn.classList.remove('bg-primary', 'text-on-primary', 'loading');
+                        }, 1500);
+
+                    } catch (error) {
+                        console.error('Error adding to cart:', error);
+                        InstantKeyAnimations.showNotification('Error adding to cart', 'error');
+                        btn.classList.remove('loading');
+                        btn.innerHTML = '<span class="material-symbols-outlined">shopping_cart</span>';
+                    }
                 }
             });
         }
 
-        // Platform filter buttons
-        filterPlatforms.forEach(btn => {
-            btn.addEventListener('click', () => {
-                btn.classList.toggle('active');
-                if (btn.classList.contains('active')) {
-                    btn.classList.remove('bg-surface-container-high', 'text-on-surface-variant', 'border-outline-variant/20');
-                    btn.classList.add('bg-secondary-container', 'text-on-secondary-container', 'border-secondary/20');
-                } else {
-                    btn.classList.add('bg-surface-container-high', 'text-on-surface-variant', 'border-outline-variant/20');
-                    btn.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'border-secondary/20');
+        // Setup load more
+        function setupLoadMore() {
+            const loadMoreBtn = document.querySelector('.load-more');
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', async () => {
+                    loadMoreBtn.classList.add('loading');
+                    loadMoreBtn.textContent = 'Loading...';
+
+                    currentPage++;
+                    await loadProducts(currentPage, true);
+
+                    loadMoreBtn.classList.remove('loading');
+                    loadMoreBtn.textContent = 'LOAD MORE GAMES';
+                });
+            }
+        }
+
+        // Utility functions
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Initialize when DOM and API are ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Wait for API to load
+            const checkAPI = setInterval(() => {
+                if (window.InstantKeyAPI) {
+                    clearInterval(checkAPI);
+                    initCatalog();
                 }
-                applyFilters();
-            });
-        });
+            }, 100);
 
-        // Genre checkboxes
-        filterCheckboxes.forEach(checkbox => {
-            checkbox.addEventListener('click', () => {
-                const input = checkbox.querySelector('input');
-                input.checked = !input.checked;
-
-                if (input.checked) {
-                    checkbox.classList.remove('bg-surface-container-highest', 'border-outline-variant');
-                    checkbox.classList.add('bg-primary-container', 'border-primary-container');
-                    checkbox.innerHTML = '<input type="checkbox" class="hidden" data-genre="' + input.dataset.genre + '" checked><span class="material-symbols-outlined text-[12px] text-on-primary-container font-black">check</span>';
-                } else {
-                    checkbox.classList.add('bg-surface-container-highest', 'border-outline-variant');
-                    checkbox.classList.remove('bg-primary-container', 'border-primary-container');
-                    checkbox.innerHTML = '<input type="checkbox" class="hidden" data-genre="' + input.dataset.genre + '">';
+            // Fallback after 3 seconds
+            setTimeout(() => {
+                if (!window.InstantKeyAPI) {
+                    clearInterval(checkAPI);
+                    initCatalog();
                 }
-                applyFilters();
-            });
-        });
-
-        // Rating filters
-        filterRatings.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterRatings.forEach(b => b.classList.remove('active', 'text-primary-dim'));
-                filterRatings.forEach(b => b.classList.add('text-on-surface-variant'));
-                btn.classList.add('active', 'text-primary-dim');
-                btn.classList.remove('text-on-surface-variant');
-                applyFilters();
-            });
-        });
-
-        // Sorting
-        sortSelect.addEventListener('change', () => {
-            const sortBy = sortSelect.value;
-            const grid = document.querySelector('.products-grid');
-            const cards = Array.from(productCards);
-
-            cards.sort((a, b) => {
-                const aPrice = parseFloat(a.dataset.price);
-                const bPrice = parseFloat(b.dataset.price);
-                const aRating = parseInt(a.dataset.rating);
-                const bRating = parseInt(b.dataset.rating);
-
-                switch(sortBy) {
-                    case 'price-low':
-                        return aPrice - bPrice;
-                    case 'price-high':
-                        return bPrice - aPrice;
-                    case 'rating':
-                        return bRating - aRating;
-                    case 'newest':
-                        // For demo, sort by price as proxy for "newest"
-                        return bPrice - aPrice;
-                    default:
-                        return 0;
-                }
-            });
-
-            cards.forEach(card => grid.appendChild(card));
-        });
-
-        // Add to cart functionality
-        document.querySelectorAll('.add-to-cart').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                btn.innerHTML = '<span class="material-symbols-outlined text-on-primary">check</span>';
-                btn.classList.add('bg-primary', 'text-on-primary');
-                setTimeout(() => {
-                    btn.innerHTML = '<span class="material-symbols-outlined">shopping_cart</span>';
-                    btn.classList.remove('bg-primary', 'text-on-primary');
-                }, 1000);
-            });
-        });
-
-        // Load more functionality
-        document.querySelector('.load-more').addEventListener('click', () => {
-            // In a real app, this would load more products from an API
-            alert('Loading more games... (This would load additional products in a real implementation)');
+            }, 3000);
         });
     </script>
+    <script src="js/api.js"></script>
 </body>
 </html></content>
 <parameter name="filePath">c:\Users\oianl\Desktop\progetto sportiello\ISTANT-KEY-progetto-scolastico-\product_catalog.html
