@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Checkout - INSTANT KEY</title>
+    <meta name="description" content="Complete your purchase and get instant delivery of your game keys."/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#003d42",
+                        "primary-dim": "#00ec3b",
+                        "primary": "#9cff93",
+                        "tertiary-fixed": "#0eeafd",
+                        "on-error-container": "#ffd2c8",
+                        "on-primary-container": "#005a10",
+                        "on-secondary-fixed": "#003a42",
+                        "on-surface": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005c64",
+                        "surface-variant": "#262627",
+                        "primary-fixed-dim": "#00ec3b",
+                        "surface": "#0e0e0f",
+                        "surface-tint": "#9cff93",
+                        "on-secondary": "#004d57",
+                        "secondary-fixed-dim": "#00d7f0",
+                        "primary-container": "#00fc40",
+                        "tertiary-dim": "#00dbec",
+                        "on-tertiary": "#005b63",
+                        "tertiary-container": "#0eeafd",
+                        "on-error": "#450900",
+                        "background": "#0e0e0f",
+                        "error": "#ff7351",
+                        "inverse-surface": "#fcf8f9",
+                        "on-primary": "#006413",
+                        "outline-variant": "#484849",
+                        "secondary-container": "#006875",
+                        "on-primary-fixed-variant": "#006513",
+                        "error-dim": "#d53d18",
+                        "on-secondary-container": "#e8fbff",
+                        "surface-container": "#1a191b",
+                        "primary-fixed": "#00fc40",
+                        "tertiary": "#8af2ff",
+                        "on-tertiary-container": "#005159",
+                        "surface-bright": "#2c2c2d",
+                        "surface-container-highest": "#262627",
+                        "surface-container-high": "#201f21",
+                        "error-container": "#b92902",
+                        "on-primary-fixed": "#00440a",
+                        "tertiary-fixed-dim": "#00dbec",
+                        "surface-dim": "#0e0e0f",
+                        "surface-container-lowest": "#000000",
+                        "on-surface-variant": "#adaaab",
+                        "secondary": "#00e3fd",
+                        "inverse-primary": "#006f16",
+                        "surface-container-low": "#131314",
+                        "on-secondary-fixed-variant": "#005964",
+                        "on-background": "#ffffff",
+                        "secondary-dim": "#00d4ec",
+                        "inverse-on-surface": "#565556",
+                        "outline": "#767576",
+                        "secondary-fixed": "#26e6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .kinetic-gradient {
+            background: linear-gradient(135deg, #9cff93 0%, #00fc40 100%);
+        }
+        .glass-panel {
+            background: rgba(14, 14, 15, 0.7);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+    <!-- TopNavBar (Simplified for checkout) -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0e0e0f]/70 backdrop-blur-xl shadow-2xl">
+        <div class="flex justify-between items-center w-full px-6 py-4 max-w-[1920px] mx-auto">
+            <a href="index.html" class="text-2xl font-bold tracking-tighter text-[#00FF41] font-['Space_Grotesk'] hover:text-primary transition-colors">INSTANT KEY</a>
+            <div class="flex items-center gap-4">
+                <span class="text-on-surface-variant text-sm">Secure Checkout</span>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-secondary">lock</span>
+                    <span class="text-secondary text-sm">SSL Encrypted</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Progress Indicator -->
+            <div class="mb-8">
+                <div class="flex items-center justify-center">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                            <span class="material-symbols-outlined text-on-primary text-sm">shopping_cart</span>
+                        </div>
+                        <div class="w-16 h-0.5 bg-primary"></div>
+                        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                            <span class="material-symbols-outlined text-on-primary text-sm">credit_card</span>
+                        </div>
+                        <div class="w-16 h-0.5 bg-outline-variant"></div>
+                        <div class="w-8 h-8 bg-surface-container-high rounded-full flex items-center justify-center">
+                            <span class="material-symbols-outlined text-on-surface-variant text-sm">check_circle</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center mt-4">
+                    <span class="text-on-surface-variant text-sm">Cart</span>
+                    <span class="mx-8 text-primary font-medium">Payment</span>
+                    <span class="text-on-surface-variant text-sm">Complete</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Checkout Form -->
+                <div class="space-y-8">
+                    <!-- Contact Information -->
+                    <div class="bg-surface-container-low p-6 rounded-xl border border-white/5">
+                        <h2 class="font-headline font-bold text-xl mb-6">Contact Information</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-on-surface mb-2">Email Address</label>
+                                <input type="email" id="email" required class="w-full bg-surface-container-highest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/40 focus:border-primary/40 transition-all" placeholder="Enter your email"/>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="newsletter" class="w-4 h-4 bg-surface-container-highest border border-outline-variant/20 rounded focus:ring-primary/40 text-primary"/>
+                                <label for="newsletter" class="ml-3 text-sm text-on-surface-variant">Send me updates about new games and offers</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="bg-surface-container-low p-6 rounded-xl border border-white/5">
+                        <h2 class="font-headline font-bold text-xl mb-6">Payment Method</h2>
+                        <div class="space-y-4">
+                            <!-- Payment Options -->
+                            <div class="grid grid-cols-3 gap-3">
+                                <button class="payment-method bg-surface-container-highest hover:bg-surface-container-high p-4 rounded-lg border border-outline-variant/20 hover:border-primary/40 transition-all flex flex-col items-center gap-2 active" data-method="card">
+                                    <span class="material-symbols-outlined text-2xl">credit_card</span>
+                                    <span class="text-sm font-medium">Card</span>
+                                </button>
+                                <button class="payment-method bg-surface-container-highest hover:bg-surface-container-high p-4 rounded-lg border border-outline-variant/20 hover:border-primary/40 transition-all flex flex-col items-center gap-2" data-method="paypal">
+                                    <span class="material-symbols-outlined text-2xl">account_balance_wallet</span>
+                                    <span class="text-sm font-medium">PayPal</span>
+                                </button>
+                                <button class="payment-method bg-surface-container-highest hover:bg-surface-container-high p-4 rounded-lg border border-outline-variant/20 hover:border-primary/40 transition-all flex flex-col items-center gap-2" data-method="crypto">
+                                    <span class="material-symbols-outlined text-2xl">currency_bitcoin</span>
+                                    <span class="text-sm font-medium">Crypto</span>
+                                </button>
+                            </div>
+
+                            <!-- Card Details -->
+                            <div id="cardDetails" class="space-y-4">
+                                <div>
+                                    <label for="cardNumber" class="block text-sm font-medium text-on-surface mb-2">Card Number</label>
+                                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" class="w-full bg-surface-container-highest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/40 focus:border-primary/40 transition-all"/>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="expiry" class="block text-sm font-medium text-on-surface mb-2">Expiry Date</label>
+                                        <input type="text" id="expiry" placeholder="MM/YY" class="w-full bg-surface-container-highest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/40 focus:border-primary/40 transition-all"/>
+                                    </div>
+                                    <div>
+                                        <label for="cvv" class="block text-sm font-medium text-on-surface mb-2">CVV</label>
+                                        <input type="text" id="cvv" placeholder="123" class="w-full bg-surface-container-highest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/40 focus:border-primary/40 transition-all"/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="cardName" class="block text-sm font-medium text-on-surface mb-2">Name on Card</label>
+                                    <input type="text" id="cardName" placeholder="John Doe" class="w-full bg-surface-container-highest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/40 focus:border-primary/40 transition-all"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Billing Address -->
+                    <div class="bg-surface-container-low p-6 rounded-xl border border-white/5">
+                        <h2 class="font-headline font-bold text-xl mb-6">Billing Address</h2>
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium text-on-surface mb-2">First Name</label>
+                                    <input type="text" id="firstName" class="w-full bg-surface-container-highest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/40 focus:border-primary/40 transition-all"/>
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium text-on-surface mb-2">Last Name</label>
+                                    <input type="text" id="lastName" class="w-full bg-surface-container-highest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/40 focus:border-primary/40 transition-all"/>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="address" class="block text-sm font-medium text-on-surface mb-2">Address</label>
+                                <input type="text" id="address" placeholder="123 Main St" class="w-full bg-surface-container-highest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/40 focus:border-primary/40 transition-all"/>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="city" class="block text-sm font-medium text-on-surface mb-2">City</label>
+                                    <input type="text" id="city" class="w-full bg-surface-container-highest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/40 focus:border-primary/40 transition-all"/>
+                                </div>
+                                <div>
+                                    <label for="zipCode" class="block text-sm font-medium text-on-surface mb-2">ZIP Code</label>
+                                    <input type="text" id="zipCode" class="w-full bg-surface-container-highest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/40 focus:border-primary/40 transition-all"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="lg:col-span-1">
+                    <div class="bg-surface-container-low p-6 rounded-xl border border-white/5 sticky top-28">
+                        <h2 class="font-headline font-bold text-xl mb-6">Order Summary</h2>
+
+                        <!-- Order Items -->
+                        <div class="space-y-4 mb-6">
+                            <div class="flex gap-4">
+                                <img class="w-16 h-16 object-cover rounded-lg" alt="Cyberpunk 2077" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=64&h=64&fit=crop&crop=center"/>
+                                <div class="flex-grow">
+                                    <h3 class="font-medium text-sm">Cyberpunk 2077: Phantom Liberty</h3>
+                                    <p class="text-on-surface-variant text-xs">Steam Key</p>
+                                    <p class="text-primary font-bold">$44.99</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <img class="w-16 h-16 object-cover rounded-lg" alt="Marvel's Spider-Man 2" src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=64&h=64&fit=crop&crop=center"/>
+                                <div class="flex-grow">
+                                    <h3 class="font-medium text-sm">Marvel's Spider-Man 2</h3>
+                                    <p class="text-on-surface-variant text-xs">PlayStation 5</p>
+                                    <p class="text-primary font-bold">$39.99</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-white/5 pt-4 space-y-3 mb-6">
+                            <div class="flex justify-between">
+                                <span class="text-on-surface-variant">Subtotal</span>
+                                <span class="font-medium">$84.98</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-on-surface-variant">Tax</span>
+                                <span class="font-medium">$8.50</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-on-surface-variant">Delivery</span>
+                                <span class="text-secondary font-medium">FREE</span>
+                            </div>
+                            <div class="border-t border-white/5 pt-3">
+                                <div class="flex justify-between text-lg font-headline font-bold">
+                                    <span>Total</span>
+                                    <span class="text-primary">$93.48</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="material-symbols-outlined text-secondary text-lg">bolt</span>
+                                <span class="text-on-surface-variant">Instant delivery in under 5 seconds</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="material-symbols-outlined text-primary text-lg">verified</span>
+                                <span class="text-on-surface-variant">Official keys guaranteed</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="material-symbols-outlined text-tertiary text-lg">security</span>
+                                <span class="text-on-surface-variant">Secure payment processing</span>
+                            </div>
+                        </div>
+
+                        <button class="w-full kinetic-gradient text-on-primary-container py-4 rounded-lg font-headline font-bold text-lg hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 complete-order-btn">
+                            <span class="material-symbols-outlined">lock</span>
+                            Complete Order
+                        </button>
+
+                        <p class="text-on-surface-variant text-xs text-center mt-4">
+                            By completing your order, you agree to our <a href="#" class="text-primary hover:text-primary-dim">Terms of Service</a> and <a href="#" class="text-primary hover:text-primary-dim">Privacy Policy</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-low border-t border-white/5 mt-16">
+        <div class="max-w-[1920px] mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="md:col-span-2">
+                    <div class="text-2xl font-bold tracking-tighter text-[#00FF41] font-['Space_Grotesk'] mb-6">INSTANT KEY</div>
+                    <p class="text-on-surface-variant mb-6 max-w-md">Experience the kinetic pulse of instant gaming. The fastest, most secure digital gaming marketplace.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">share</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">forum</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">mail</span>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-headline font-bold text-lg mb-6">Platform</h4>
+                    <ul class="space-y-3">
+                        <li><a href="product_catalog.html" class="text-on-surface-variant hover:text-primary transition-colors">PC Games</a></li>
+                        <li><a href="product_catalog.html?platform=console" class="text-on-surface-variant hover:text-primary transition-colors">Console Games</a></li>
+                        <li><a href="product_catalog.html?category=software" class="text-on-surface-variant hover:text-primary transition-colors">Software</a></li>
+                        <li><a href="product_catalog.html?category=subscription" class="text-on-surface-variant hover:text-primary transition-colors">Subscriptions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-headline font-bold text-lg mb-6">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="support_faq.html" class="text-on-surface-variant hover:text-primary transition-colors">FAQ</a></li>
+                        <li><a href="submit_ticket.html" class="text-on-surface-variant hover:text-primary transition-colors">Support</a></li>
+                        <li><a href="verified_reviews.html" class="text-on-surface-variant hover:text-primary transition-colors">Reviews</a></li>
+                        <li><a href="partner_with_us.html" class="text-on-surface-variant hover:text-primary transition-colors">Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/5 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-on-surface-variant text-sm">© 2024 Instant Key. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-sm">Privacy Policy</a>
+                    <a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Payment method selection
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        const cardDetails = document.getElementById('cardDetails');
+
+        paymentMethods.forEach(method => {
+            method.addEventListener('click', function() {
+                paymentMethods.forEach(m => {
+                    m.classList.remove('active', 'border-primary/40', 'bg-surface-container-high');
+                    m.classList.add('bg-surface-container-highest', 'border-outline-variant/20');
+                });
+                this.classList.add('active', 'border-primary/40', 'bg-surface-container-high');
+                this.classList.remove('bg-surface-container-highest', 'border-outline-variant/20');
+
+                // Show/hide card details based on payment method
+                if (this.dataset.method === 'card') {
+                    cardDetails.style.display = 'block';
+                } else {
+                    cardDetails.style.display = 'none';
+                }
+            });
+        });
+
+        // Form validation and submission
+        document.querySelector('.complete-order-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Basic validation
+            const email = document.getElementById('email').value;
+            const cardNumber = document.getElementById('cardNumber').value;
+            const expiry = document.getElementById('expiry').value;
+            const cvv = document.getElementById('cvv').value;
+            const cardName = document.getElementById('cardName').value;
+
+            if (!email) {
+                alert('Please enter your email address');
+                return;
+            }
+
+            const activePayment = document.querySelector('.payment-method.active');
+            if (activePayment.dataset.method === 'card') {
+                if (!cardNumber || !expiry || !cvv || !cardName) {
+                    alert('Please fill in all card details');
+                    return;
+                }
+            }
+
+            // In a real app, this would process the payment
+            // For demo purposes, redirect to order confirmation
+            window.location.href = 'order_confirmation_delivery.html';
+        });
+
+        // Auto-format card number
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+            e.target.value = formattedValue;
+        });
+
+        // Auto-format expiry date
+        document.getElementById('expiry').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html></content>
+<parameter name="filePath">c:\Users\oianl\Desktop\progetto sportiello\ISTANT-KEY-progetto-scolastico-\checkout.html

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>INSTANT KEY - High-Performance Digital Gaming Marketplace</title>
+    <meta name="description" content="Experience the kinetic pulse of instant gaming. Ultra-fast delivery in under 5 seconds. Premium digital game keys for PC, Console, and more."/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#003d42",
+                        "primary-dim": "#00ec3b",
+                        "primary": "#9cff93",
+                        "tertiary-fixed": "#0eeafd",
+                        "on-error-container": "#ffd2c8",
+                        "on-primary-container": "#005a10",
+                        "on-secondary-fixed": "#003a42",
+                        "on-surface": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005c64",
+                        "surface-variant": "#262627",
+                        "primary-fixed-dim": "#00ec3b",
+                        "surface": "#0e0e0f",
+                        "surface-tint": "#9cff93",
+                        "on-secondary": "#004d57",
+                        "secondary-fixed-dim": "#00d7f0",
+                        "primary-container": "#00fc40",
+                        "tertiary-dim": "#00dbec",
+                        "on-tertiary": "#005b63",
+                        "tertiary-container": "#0eeafd",
+                        "on-error": "#450900",
+                        "background": "#0e0e0f",
+                        "error": "#ff7351",
+                        "inverse-surface": "#fcf8f9",
+                        "on-primary": "#006413",
+                        "outline-variant": "#484849",
+                        "secondary-container": "#006875",
+                        "on-primary-fixed-variant": "#006513",
+                        "error-dim": "#d53d18",
+                        "on-secondary-container": "#e8fbff",
+                        "surface-container": "#1a191b",
+                        "primary-fixed": "#00fc40",
+                        "tertiary": "#8af2ff",
+                        "on-tertiary-container": "#005159",
+                        "surface-bright": "#2c2c2d",
+                        "surface-container-highest": "#262627",
+                        "surface-container-high": "#201f21",
+                        "error-container": "#b92902",
+                        "on-primary-fixed": "#00440a",
+                        "tertiary-fixed-dim": "#00dbec",
+                        "surface-dim": "#0e0e0f",
+                        "surface-container-lowest": "#000000",
+                        "on-surface-variant": "#adaaab",
+                        "secondary": "#00e3fd",
+                        "inverse-primary": "#006f16",
+                        "surface-container-low": "#131314",
+                        "on-secondary-fixed-variant": "#005964",
+                        "on-background": "#ffffff",
+                        "secondary-dim": "#00d4ec",
+                        "inverse-on-surface": "#565556",
+                        "outline": "#767576",
+                        "secondary-fixed": "#26e6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .kinetic-gradient {
+            background: linear-gradient(135deg, #9cff93 0%, #00fc40 100%);
+        }
+        .glass-panel {
+            background-color: rgba(14, 14, 15, 0.7);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0e0e0f]/70 backdrop-blur-xl shadow-2xl">
+        <div class="flex justify-between items-center w-full px-6 py-4 max-w-[1920px] mx-auto">
+            <div class="flex items-center gap-12">
+                <a href="index.html" class="text-2xl font-bold tracking-tighter text-[#00FF41] font-['Space_Grotesk'] hover:text-primary transition-colors">INSTANT KEY</a>
+                <div class="hidden md:flex items-center gap-8 font-['Space_Grotesk'] tracking-tight">
+                    <a class="text-[#00FF41] font-bold border-b-2 border-[#00FF41] hover:text-[#00FF41] transition-colors duration-150 ease-out" href="product_catalog.html">PC</a>
+                    <a class="text-[#adaaab] hover:text-[#00FF41] transition-colors duration-150 ease-out" href="product_catalog.html?platform=console">Console</a>
+                    <a class="text-[#adaaab] hover:text-[#00FF41] transition-colors duration-150 ease-out" href="product_catalog.html?category=software">Software</a>
+                    <a class="text-[#adaaab] hover:text-[#00FF41] transition-colors duration-150 ease-out" href="product_catalog.html?category=subscription">Subscription</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-6">
+                <!-- Search Bar -->
+                <div class="hidden lg:flex items-center bg-surface-container-highest px-4 py-2 rounded-lg gap-3 w-80 group transition-all duration-150 focus-within:ring-1 focus-within:ring-secondary/40">
+                    <span class="material-symbols-outlined text-on-surface-variant group-focus-within:text-secondary">search</span>
+                    <input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-on-surface-variant" placeholder="Search games, keys..." type="text"/>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="shopping_cart.html" class="text-[#adaaab] hover:text-[#00FF41] transition-transform active:scale-95 duration-150">
+                        <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                    </a>
+                    <a href="login.html" class="text-[#adaaab] hover:text-[#00FF41] transition-transform active:scale-95 duration-150">
+                        <span class="material-symbols-outlined" data-icon="person">person</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 px-6 max-w-[1920px] mx-auto">
+        <!-- Hero Section: Kinetic Pulse -->
+        <section class="relative min-h-[716px] flex items-center mb-24 overflow-hidden rounded-xl">
+            <div class="absolute inset-0 z-0">
+                <img alt="High-fidelity cinematic shot of a futuristic neon city from Cyberpunk 2077 with glowing rain and atmospheric lighting" class="w-full h-full object-cover opacity-60" src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1920&h=1080&fit=crop&crop=center"/>
+                <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/60 to-transparent"></div>
+            </div>
+            <div class="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-8 md:px-16">
+                <div class="space-y-8 max-w-2xl">
+                    <div class="inline-flex items-center gap-3 px-3 py-1 bg-primary-container/20 rounded-sm">
+                        <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                        <span class="font-label text-xs font-bold uppercase tracking-widest text-primary">High-Performance Delivery</span>
+                    </div>
+                    <h1 class="font-headline text-6xl md:text-8xl font-bold tracking-tighter leading-[0.9] text-on-surface">
+                        ULTRA-FAST <br/> <span class="text-primary">&lt; 5 SECONDS</span> <br/> DELIVERY.
+                    </h1>
+                    <p class="text-on-surface-variant text-lg md:text-xl max-w-md font-body leading-relaxed">
+                        Experience the kinetic pulse of instant gaming. No waiting. No friction. Just pure performance.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="product_catalog.html" class="kinetic-gradient text-on-primary-container px-8 py-4 rounded-md font-headline font-bold text-lg hover:brightness-110 active:scale-95 transition-all">
+                            SHOP DEALS
+                        </a>
+                        <a href="product_catalog.html?filter=new" class="bg-surface-container-highest border border-primary/20 text-on-surface px-8 py-4 rounded-md font-headline font-bold text-lg hover:bg-surface-container-high transition-all">
+                            LATEST RELEASES
+                        </a>
+                    </div>
+                </div>
+                <!-- Featured Card - Asymmetric Offset -->
+                <div class="hidden md:block transform translate-y-12 rotate-2">
+                    <div class="bg-surface-container-high p-1 rounded-xl shadow-2xl ring-1 ring-white/5">
+                        <div class="relative rounded-lg overflow-hidden group">
+                            <img class="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-500" alt="Promotional key art for Cyberpunk 2077 Phantom Liberty featuring V in a dark high-tech environment" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=400&h=600&fit=crop&crop=center"/>
+                            <div class="absolute top-4 right-4 bg-error text-on-error px-4 py-2 font-headline font-bold text-xl rounded-sm">
+                                -80%
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-surface-container-lowest to-transparent">
+                                <h3 class="font-headline text-3xl font-bold mb-2">Cyberpunk 2077</h3>
+                                <p class="text-primary-dim font-headline text-2xl font-bold">$11.99 <span class="text-on-surface-variant text-sm line-through ml-2">$59.99</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Section (Prominent Quick Search) -->
+        <section class="mb-24">
+            <div class="bg-surface-container-low p-12 rounded-2xl flex flex-col items-center text-center gap-8">
+                <div class="max-w-3xl w-full">
+                    <h2 class="font-headline text-3xl font-bold mb-8 uppercase tracking-tight">Access the entire global library</h2>
+                    <div class="relative w-full flex items-center">
+                        <span class="absolute left-6 material-symbols-outlined text-on-surface-variant text-3xl">search</span>
+                        <input class="w-full bg-surface-container-highest py-6 px-20 rounded-xl text-xl font-body border-none focus:ring-2 focus:ring-secondary/40 placeholder:text-outline outline-none" placeholder="Search by game name, genre, or platform..." type="text"/>
+                        <div class="absolute right-4 flex gap-2">
+                            <span class="bg-surface-container-low px-3 py-1 rounded text-xs font-label uppercase text-on-surface-variant border border-white/5">Enter to Search</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="text-xs font-label uppercase text-on-surface-variant">Trending:</span>
+                    <a class="text-xs font-label uppercase text-primary hover:underline" href="product_details.html?id=elden-ring">Elden Ring</a>
+                    <a class="text-xs font-label uppercase text-primary hover:underline" href="product_details.html?id=modern-warfare">Modern Warfare III</a>
+                    <a class="text-xs font-label uppercase text-primary hover:underline" href="product_details.html?id=starfield">Starfield</a>
+                    <a class="text-xs font-label uppercase text-primary hover:underline" href="product_details.html?id=tekken8">Tekken 8</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Arrivals Section (Bento Grid) -->
+        <section class="mb-32">
+            <div class="flex items-center justify-between mb-12">
+                <h2 class="font-headline text-4xl font-bold uppercase tracking-tight">New Arrivals</h2>
+                <a href="product_catalog.html?filter=new" class="text-primary hover:text-primary-dim transition-colors font-label uppercase text-sm tracking-wider">View All →</a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Game Card 1 -->
+                <a href="product_details.html?id=alan-wake-2" class="group">
+                    <div class="bg-surface-container-high rounded-xl overflow-hidden hover:bg-surface-container-highest transition-all duration-300 ring-1 ring-white/5 hover:ring-primary/20">
+                        <div class="relative">
+                            <img class="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-500" alt="Alan Wake 2 game cover" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=300&h=400&fit=crop&crop=center"/>
+                            <div class="absolute top-3 right-3 bg-primary text-on-primary px-2 py-1 font-label text-xs font-bold uppercase rounded">New</div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-headline font-bold text-lg mb-1">Alan Wake 2</h3>
+                            <p class="text-on-surface-variant text-sm mb-2">Remedy Entertainment</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-primary font-headline font-bold text-xl">$49.99</span>
+                                <span class="text-on-surface-variant text-xs">STEAM</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Game Card 2 -->
+                <a href="product_details.html?id=spider-man-2" class="group">
+                    <div class="bg-surface-container-high rounded-xl overflow-hidden hover:bg-surface-container-highest transition-all duration-300 ring-1 ring-white/5 hover:ring-primary/20">
+                        <div class="relative">
+                            <img class="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-500" alt="Marvel's Spider-Man 2 game cover" src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=300&h=400&fit=crop&crop=center"/>
+                            <div class="absolute top-3 right-3 bg-error text-on-error px-2 py-1 font-label text-xs font-bold uppercase rounded">-25%</div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-headline font-bold text-lg mb-1">Marvel's Spider-Man 2</h3>
+                            <p class="text-on-surface-variant text-sm mb-2">Insomniac Games</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-primary font-headline font-bold text-xl">$56.24</span>
+                                <span class="text-on-surface-variant text-xs line-through">$74.99</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Game Card 3 -->
+                <a href="product_details.html?id=resident-evil-4" class="group">
+                    <div class="bg-surface-container-high rounded-xl overflow-hidden hover:bg-surface-container-highest transition-all duration-300 ring-1 ring-white/5 hover:ring-primary/20">
+                        <div class="relative">
+                            <img class="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-500" alt="Resident Evil 4 Remake game cover" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=300&h=400&fit=crop&crop=center"/>
+                            <div class="absolute top-3 right-3 bg-primary text-on-primary px-2 py-1 font-label text-xs font-bold uppercase rounded">New</div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-headline font-bold text-lg mb-1">Resident Evil 4</h3>
+                            <p class="text-on-surface-variant text-sm mb-2">Capcom</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-primary font-headline font-bold text-xl">$39.99</span>
+                                <span class="text-on-surface-variant text-xs">STEAM</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Game Card 4 -->
+                <a href="product_details.html?id=diablo-4" class="group">
+                    <div class="bg-surface-container-high rounded-xl overflow-hidden hover:bg-surface-container-highest transition-all duration-300 ring-1 ring-white/5 hover:ring-primary/20">
+                        <div class="relative">
+                            <img class="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-500" alt="Diablo IV game cover" src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=300&h=400&fit=crop&crop=center"/>
+                            <div class="absolute top-3 right-3 bg-error text-on-error px-2 py-1 font-label text-xs font-bold uppercase rounded">-40%</div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-headline font-bold text-lg mb-1">Diablo IV</h3>
+                            <p class="text-on-surface-variant text-sm mb-2">Blizzard Entertainment</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-primary font-headline font-bold text-xl">$35.99</span>
+                                <span class="text-on-surface-variant text-xs line-through">$59.99</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Deals Section -->
+        <section class="mb-32">
+            <div class="flex items-center justify-between mb-12">
+                <h2 class="font-headline text-4xl font-bold uppercase tracking-tight">Flash Deals</h2>
+                <a href="product_catalog.html?filter=deals" class="text-primary hover:text-primary-dim transition-colors font-label uppercase text-sm tracking-wider">View All →</a>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Large Deal Card -->
+                <div class="lg:col-span-2">
+                    <a href="product_details.html?id=cyberpunk-2077" class="group block">
+                        <div class="bg-surface-container-high rounded-2xl overflow-hidden hover:bg-surface-container-highest transition-all duration-300 ring-1 ring-white/5 hover:ring-primary/20">
+                            <div class="relative">
+                                <img class="w-full aspect-[16/9] object-cover group-hover:scale-105 transition-transform duration-500" alt="Cyberpunk 2077 Phantom Liberty" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=800&h=450&fit=crop&crop=center"/>
+                                <div class="absolute top-6 right-6 bg-error text-on-error px-6 py-3 font-headline font-bold text-2xl rounded-lg">
+                                    -80%
+                                </div>
+                                <div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-surface-container-lowest to-transparent">
+                                    <h3 class="font-headline text-4xl font-bold mb-2">Cyberpunk 2077</h3>
+                                    <p class="text-primary-dim font-headline text-3xl font-bold">$11.99 <span class="text-on-surface-variant text-lg line-through ml-4">$59.99</span></p>
+                                    <p class="text-on-surface-variant mt-2">Includes Phantom Liberty DLC</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Side Deals -->
+                <div class="space-y-6">
+                    <a href="product_details.html?id=the-last-of-us" class="group block">
+                        <div class="bg-surface-container-high rounded-xl overflow-hidden hover:bg-surface-container-highest transition-all duration-300 ring-1 ring-white/5 hover:ring-primary/20">
+                            <div class="relative">
+                                <img class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500" alt="The Last of Us Part I" src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&h=300&fit=crop&crop=center"/>
+                                <div class="absolute top-3 right-3 bg-error text-on-error px-3 py-1 font-label text-sm font-bold uppercase rounded">-60%</div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-headline font-bold text-lg mb-1">The Last of Us Part I</h3>
+                                <p class="text-on-surface-variant text-sm mb-2">Naughty Dog</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-primary font-headline font-bold text-xl">$23.99</span>
+                                    <span class="text-on-surface-variant text-sm line-through">$59.99</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="product_details.html?id=god-of-war" class="group block">
+                        <div class="bg-surface-container-high rounded-xl overflow-hidden hover:bg-surface-container-highest transition-all duration-300 ring-1 ring-white/5 hover:ring-primary/20">
+                            <div class="relative">
+                                <img class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500" alt="God of War Ragnarök" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=400&h=300&fit=crop&crop=center"/>
+                                <div class="absolute top-3 right-3 bg-error text-on-error px-3 py-1 font-label text-sm font-bold uppercase rounded">-30%</div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-headline font-bold text-lg mb-1">God of War Ragnarök</h3>
+                                <p class="text-on-surface-variant text-sm mb-2">Santa Monica Studio</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-primary font-headline font-bold text-xl">$48.99</span>
+                                    <span class="text-on-surface-variant text-sm line-through">$69.99</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="mb-32">
+            <div class="bg-surface-container-low rounded-3xl p-16">
+                <div class="text-center mb-16">
+                    <h2 class="font-headline text-5xl font-bold uppercase tracking-tight mb-6">Why Choose Instant Key?</h2>
+                    <p class="text-on-surface-variant text-xl max-w-3xl mx-auto">Experience gaming without boundaries. Our high-performance platform delivers the fastest, most secure digital gaming experience available.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <span class="material-symbols-outlined text-primary text-4xl">bolt</span>
+                        </div>
+                        <h3 class="font-headline text-2xl font-bold mb-4">Ultra-Fast Delivery</h3>
+                        <p class="text-on-surface-variant">Get your game keys instantly. No waiting, no delays. Start playing in under 5 seconds.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <span class="material-symbols-outlined text-primary text-4xl">security</span>
+                        </div>
+                        <h3 class="font-headline text-2xl font-bold mb-4">100% Secure</h3>
+                        <p class="text-on-surface-variant">Bank-level encryption and secure payment processing. Your data is always protected.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <span class="material-symbols-outlined text-primary text-4xl">verified</span>
+                        </div>
+                        <h3 class="font-headline text-2xl font-bold mb-4">Official Keys</h3>
+                        <p class="text-on-surface-variant">All keys are official and guaranteed to work. No fake or stolen products.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-low border-t border-white/5">
+        <div class="max-w-[1920px] mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="md:col-span-2">
+                    <div class="text-2xl font-bold tracking-tighter text-[#00FF41] font-['Space_Grotesk'] mb-6">INSTANT KEY</div>
+                    <p class="text-on-surface-variant mb-6 max-w-md">Experience the kinetic pulse of instant gaming. The fastest, most secure digital gaming marketplace.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">share</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">forum</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">mail</span>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-headline font-bold text-lg mb-6">Platform</h4>
+                    <ul class="space-y-3">
+                        <li><a href="product_catalog.html" class="text-on-surface-variant hover:text-primary transition-colors">PC Games</a></li>
+                        <li><a href="product_catalog.html?platform=console" class="text-on-surface-variant hover:text-primary transition-colors">Console Games</a></li>
+                        <li><a href="product_catalog.html?category=software" class="text-on-surface-variant hover:text-primary transition-colors">Software</a></li>
+                        <li><a href="product_catalog.html?category=subscription" class="text-on-surface-variant hover:text-primary transition-colors">Subscriptions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-headline font-bold text-lg mb-6">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="support_faq.html" class="text-on-surface-variant hover:text-primary transition-colors">FAQ</a></li>
+                        <li><a href="submit_ticket.html" class="text-on-surface-variant hover:text-primary transition-colors">Support</a></li>
+                        <li><a href="verified_reviews.html" class="text-on-surface-variant hover:text-primary transition-colors">Reviews</a></li>
+                        <li><a href="partner_with_us.html" class="text-on-surface-variant hover:text-primary transition-colors">Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/5 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-on-surface-variant text-sm">© 2024 Instant Key. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-sm">Privacy Policy</a>
+                    <a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple search functionality
+        const searchInput = document.querySelector('input[placeholder="Search games, keys..."]');
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const query = encodeURIComponent(this.value);
+                window.location.href = `product_catalog.html?search=${query}`;
+            }
+        });
+    </script>
+</body>
+</html></content>
+<parameter name="filePath">c:\Users\oianl\Desktop\progetto sportiello\ISTANT-KEY-progetto-scolastico-\index.html

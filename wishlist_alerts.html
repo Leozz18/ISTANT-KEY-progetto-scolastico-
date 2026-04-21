@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Wishlist & Price Alerts - INSTANT KEY</title>
+    <meta name="description" content="Track your favorite games and get notified when prices drop or items become available."/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#003d42",
+                        "primary-dim": "#00ec3b",
+                        "primary": "#9cff93",
+                        "tertiary-fixed": "#0eeafd",
+                        "on-error-container": "#ffd2c8",
+                        "on-primary-container": "#005a10",
+                        "on-secondary-fixed": "#003a42",
+                        "on-surface": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005c64",
+                        "surface-variant": "#262627",
+                        "primary-fixed-dim": "#00ec3b",
+                        "surface": "#0e0e0f",
+                        "surface-tint": "#9cff93",
+                        "on-secondary": "#004d57",
+                        "secondary-fixed-dim": "#00d7f0",
+                        "primary-container": "#00fc40",
+                        "tertiary-dim": "#00dbec",
+                        "on-tertiary": "#005b63",
+                        "tertiary-container": "#0eeafd",
+                        "on-error": "#450900",
+                        "background": "#0e0e0f",
+                        "error": "#ff7351",
+                        "inverse-surface": "#fcf8f9",
+                        "on-primary": "#006413",
+                        "outline-variant": "#484849",
+                        "secondary-container": "#006875",
+                        "on-primary-fixed-variant": "#006513",
+                        "error-dim": "#d53d18",
+                        "on-secondary-container": "#e8fbff",
+                        "surface-container": "#1a191b",
+                        "primary-fixed": "#00fc40",
+                        "tertiary": "#8af2ff",
+                        "on-tertiary-container": "#005159",
+                        "surface-bright": "#2c2c2d",
+                        "surface-container-highest": "#262627",
+                        "surface-container-high": "#201f21",
+                        "error-container": "#b92902",
+                        "on-primary-fixed": "#00440a",
+                        "tertiary-fixed-dim": "#00dbec",
+                        "surface-dim": "#0e0e0f",
+                        "surface-container-lowest": "#000000",
+                        "on-surface-variant": "#adaaab",
+                        "secondary": "#00e3fd",
+                        "inverse-primary": "#006f16",
+                        "surface-container-low": "#131314",
+                        "on-secondary-fixed-variant": "#005964",
+                        "on-background": "#ffffff",
+                        "secondary-dim": "#00d4ec",
+                        "inverse-on-surface": "#565556",
+                        "outline": "#767576",
+                        "secondary-fixed": "#26e6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .kinetic-gradient {
+            background: linear-gradient(135deg, #9cff93 0%, #00fc40 100%);
+        }
+        .price-alert {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0e0e0f]/70 backdrop-blur-xl shadow-2xl">
+        <div class="flex justify-between items-center w-full px-6 py-4 max-w-[1920px] mx-auto">
+            <div class="flex items-center gap-12">
+                <a href="index.html" class="text-2xl font-bold tracking-tighter text-[#00FF41] font-['Space_Grotesk'] hover:text-primary transition-colors">INSTANT KEY</a>
+                <div class="hidden md:flex items-center gap-8 font-['Space_Grotesk'] tracking-tight">
+                    <a class="text-[#adaaab] hover:text-[#00FF41] transition-colors duration-150 ease-out" href="product_catalog.html">PC</a>
+                    <a class="text-[#adaaab] hover:text-[#00FF41] transition-colors duration-150 ease-out" href="product_catalog.html?platform=console">Console</a>
+                    <a class="text-[#adaaab] hover:text-[#00FF41] transition-colors duration-150 ease-out" href="product_catalog.html?category=software">Software</a>
+                    <a class="text-[#adaaab] hover:text-[#00FF41] transition-colors duration-150 ease-out" href="product_catalog.html?category=subscription">Subscription</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="flex items-center gap-4">
+                    <a href="shopping_cart.html" class="text-[#adaaab] hover:text-[#00FF41] transition-transform active:scale-95 duration-150">
+                        <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                    </a>
+                    <a href="user_dashboard.html" class="text-[#00FF41] transition-transform active:scale-95 duration-150">
+                        <span class="material-symbols-outlined" data-icon="person">person</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-16 flex-grow">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-headline font-bold mb-2">Wishlist & Price Alerts</h1>
+                <p class="text-on-surface-variant">Track your favorite games and never miss a deal</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="mb-8">
+                <div class="flex flex-wrap gap-2 border-b border-white/10">
+                    <button onclick="switchTab('wishlist')" class="tab-btn tab-active px-6 py-3 rounded-t-lg font-medium transition-all" data-tab="wishlist">
+                        My Wishlist
+                    </button>
+                    <button onclick="switchTab('alerts')" class="tab-btn px-6 py-3 rounded-t-lg font-medium text-on-surface-variant hover:text-on-surface transition-all" data-tab="alerts">
+                        Price Alerts
+                    </button>
+                    <button onclick="switchTab('following')" class="tab-btn px-6 py-3 rounded-t-lg font-medium text-on-surface-variant hover:text-on-surface transition-all" data-tab="following">
+                        Following
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Content -->
+            <div id="tabContent">
+                <!-- Wishlist Tab -->
+                <div id="wishlistTab" class="tab-content">
+                    <!-- Wishlist Stats -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-surface-container-low p-6 rounded-xl border border-white/5 text-center">
+                            <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <span class="material-symbols-outlined text-primary">favorite</span>
+                            </div>
+                            <h3 class="text-2xl font-headline font-bold mb-1">7</h3>
+                            <p class="text-on-surface-variant text-sm">Games in Wishlist</p>
+                        </div>
+
+                        <div class="bg-surface-container-low p-6 rounded-xl border border-white/5 text-center">
+                            <div class="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <span class="material-symbols-outlined text-secondary">notifications</span>
+                            </div>
+                            <h3 class="text-2xl font-headline font-bold mb-1">3</h3>
+                            <p class="text-on-surface-variant text-sm">Active Price Alerts</p>
+                        </div>
+
+                        <div class="bg-surface-container-low p-6 rounded-xl border border-white/5 text-center">
+                            <div class="w-12 h-12 bg-tertiary/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <span class="material-symbols-outlined text-tertiary">trending_down</span>
+                            </div>
+                            <h3 class="text-2xl font-headline font-bold mb-1">$127</h3>
+                            <p class="text-on-surface-variant text-sm">Potential Savings</p>
+                        </div>
+                    </div>
+
+                    <!-- Wishlist Items -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Wishlist Item 1 -->
+                        <div class="bg-surface-container-low p-6 rounded-xl border border-white/5 group hover:bg-surface-container-highest transition-all">
+                            <div class="relative mb-4">
+                                <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=300&h=200&fit=crop&crop=center" alt="Elden Ring" class="w-full h-32 rounded-lg object-cover">
+                                <button class="absolute top-2 right-2 w-8 h-8 bg-surface/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <span class="material-symbols-outlined text-error">favorite</span>
+                                </button>
+                                <div class="absolute top-2 left-2 bg-error-container text-on-error-container px-2 py-1 rounded text-xs font-medium">
+                                    -15%
+                                </div>
+                            </div>
+                            <h4 class="font-headline font-bold mb-2">Elden Ring</h4>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-on-surface-variant line-through text-sm">$59.99</span>
+                                <span class="text-primary font-bold">$50.99</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="kinetic-gradient text-on-primary-container px-4 py-2 rounded-lg font-medium hover:brightness-110 transition-all flex-1">
+                                    Add to Cart
+                                </button>
+                                <button class="bg-surface-container-highest hover:bg-surface-container-high px-3 py-2 rounded-lg transition-all">
+                                    <span class="material-symbols-outlined">notifications</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Wishlist Item 2 -->
+                        <div class="bg-surface-container-low p-6 rounded-xl border border-white/5 group hover:bg-surface-container-highest transition-all">
+                            <div class="relative mb-4">
+                                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=300&h=200&fit=crop&crop=center" alt="Baldur's Gate 3" class="w-full h-32 rounded-lg object-cover">
+                                <button class="absolute top-2 right-2 w-8 h-8 bg-surface/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <span class="material-symbols-outlined text-error">favorite</span>
+                                </button>
+                            </div>
+                            <h4 class="font-headline font-bold mb-2">Baldur's Gate 3</h4>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-primary font-bold">$49.99</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="kinetic-gradient text-on-primary-container px-4 py-2 rounded-lg font-medium hover:brightness-110 transition-all flex-1">
+                                    Add to Cart
+                                </button>
+                                <button class="bg-surface-container-highest hover:bg-surface-container-high px-3 py-2 rounded-lg transition-all">
+                                    <span class="material-symbols-outlined">notifications</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Wishlist Item 3 -->
+                        <div class="bg-surface-container-low p-6 rounded-xl border border-white/5 group hover:bg-surface-container-highest transition-all">
+                            <div class="relative mb-4">
+                                <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=300&h=200&fit=crop&crop=center" alt="Starfield" class="w-full h-32 rounded-lg object-cover">
+                                <button class="absolute top-2 right-2 w-8 h-8 bg-surface/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <span class="material-symbols-outlined text-error">favorite</span>
+                                </button>
+                                <div class="absolute top-2 left-2 bg-secondary-container text-on-secondary-container px-2 py-1 rounded text-xs font-medium">
+                                    New
+                                </div>
+                            </div>
+                            <h4 class="font-headline font-bold mb-2">Starfield</h4>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-primary font-bold">$69.99</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="bg-surface-container-highest text-on-surface-variant px-4 py-2 rounded-lg font-medium cursor-not-allowed flex-1">
+                                    Out of Stock
+                                </button>
+                                <button class="bg-secondary-container text-on-secondary-container px-3 py-2 rounded-lg transition-all">
+                                    <span class="material-symbols-outlined">notifications_active</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price Alerts Tab -->
+                <div id="alertsTab" class="tab-content hidden">
+                    <div class="bg-surface-container-low p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-headline font-bold mb-6">Active Price Alerts</h3>
+
+                        <!-- Alert Item 1 -->
+                        <div class="flex items-center gap-4 p-4 bg-surface-container-highest rounded-lg mb-4 price-alert">
+                            <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=60&h=60&fit=crop&crop=center" alt="Elden Ring" class="w-12 h-12 rounded-lg object-cover">
+                            <div class="flex-grow">
+                                <h4 class="font-medium">Elden Ring</h4>
+                                <p class="text-on-surface-variant text-sm">Price dropped from $59.99 to $50.99</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-primary font-bold">Save $9.00</p>
+                                <p class="text-on-surface-variant text-sm">2 hours ago</p>
+                            </div>
+                            <button class="kinetic-gradient text-on-primary-container px-4 py-2 rounded-lg font-medium hover:brightness-110 transition-all">
+                                Buy Now
+                            </button>
+                        </div>
+
+                        <!-- Alert Item 2 -->
+                        <div class="flex items-center gap-4 p-4 bg-surface-container-highest rounded-lg mb-4">
+                            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=60&h=60&fit=crop&crop=center" alt="The Witcher 3" class="w-12 h-12 rounded-lg object-cover">
+                            <div class="flex-grow">
+                                <h4 class="font-medium">The Witcher 3</h4>
+                                <p class="text-on-surface-variant text-sm">Target price: $25.00 (current: $39.99)</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="bg-surface-container-low text-on-surface-variant px-2 py-1 rounded text-xs">Waiting</span>
+                            </div>
+                            <button class="bg-surface-container-low hover:bg-surface-container-high px-4 py-2 rounded-lg transition-all">
+                                Edit Alert
+                            </button>
+                        </div>
+
+                        <!-- Alert Item 3 -->
+                        <div class="flex items-center gap-4 p-4 bg-surface-container-highest rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=60&h=60&fit=crop&crop=center" alt="Starfield" class="w-12 h-12 rounded-lg object-cover">
+                            <div class="flex-grow">
+                                <h4 class="font-medium">Starfield</h4>
+                                <p class="text-on-surface-variant text-sm">Alert when back in stock</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="bg-tertiary-container text-on-tertiary-container px-2 py-1 rounded text-xs">Stock Alert</span>
+                            </div>
+                            <button class="bg-surface-container-low hover:bg-surface-container-high px-4 py-2 rounded-lg transition-all">
+                                Edit Alert
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Create New Alert -->
+                    <div class="bg-surface-container-low p-6 rounded-xl border border-white/5 mt-8">
+                        <h3 class="text-xl font-headline font-bold mb-6">Create New Price Alert</h3>
+                        <form class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-on-surface mb-2">Game Title</label>
+                                    <input type="text" placeholder="Search for a game..." class="w-full bg-surface-container-highest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/40 focus:border-primary/40 transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-on-surface mb-2">Target Price</label>
+                                    <input type="number" placeholder="0.00" step="0.01" class="w-full bg-surface-container-highest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/40 focus:border-primary/40 transition-all">
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="w-4 h-4 bg-surface-container-highest border border-outline-variant/20 text-primary focus:ring-primary/40">
+                                    <span class="ml-2 text-on-surface-variant">Notify when back in stock</span>
+                                </label>
+                            </div>
+                            <button type="submit" class="kinetic-gradient text-on-primary-container px-6 py-3 rounded-lg font-medium hover:brightness-110 transition-all">
+                                Create Alert
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Following Tab -->
+                <div id="followingTab" class="tab-content hidden">
+                    <div class="bg-surface-container-low p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-headline font-bold mb-6">Games You're Following</h3>
+                        <div class="text-center py-12">
+                            <div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="material-symbols-outlined text-on-surface-variant">visibility</span>
+                            </div>
+                            <h4 class="font-headline font-bold mb-2">No games followed yet</h4>
+                            <p class="text-on-surface-variant mb-6">Follow games to get updates on new releases and price changes</p>
+                            <a href="product_catalog.html" class="kinetic-gradient text-on-primary-container px-6 py-4 rounded-lg font-medium hover:brightness-110 transition-all inline-block">
+                                Browse Games
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-low border-t border-white/5 mt-16">
+        <div class="max-w-[1920px] mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="md:col-span-2">
+                    <div class="text-2xl font-bold tracking-tighter text-[#00FF41] font-['Space_Grotesk'] mb-6">INSTANT KEY</div>
+                    <p class="text-on-surface-variant mb-6 max-w-md">Experience the kinetic pulse of instant gaming. The fastest, most secure digital gaming marketplace.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">share</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">forum</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">mail</span>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-headline font-bold text-lg mb-6">Platform</h4>
+                    <ul class="space-y-3">
+                        <li><a href="product_catalog.html" class="text-on-surface-variant hover:text-primary transition-colors">PC Games</a></li>
+                        <li><a href="product_catalog.html?platform=console" class="text-on-surface-variant hover:text-primary transition-colors">Console Games</a></li>
+                        <li><a href="product_catalog.html?category=software" class="text-on-surface-variant hover:text-primary transition-colors">Software</a></li>
+                        <li><a href="product_catalog.html?category=subscription" class="text-on-surface-variant hover:text-primary transition-colors">Subscriptions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-headline font-bold text-lg mb-6">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="support_faq.html" class="text-on-surface-variant hover:text-primary transition-colors">FAQ</a></li>
+                        <li><a href="submit_ticket.html" class="text-on-surface-variant hover:text-primary transition-colors">Support</a></li>
+                        <li><a href="verified_reviews.html" class="text-on-surface-variant hover:text-primary transition-colors">Reviews</a></li>
+                        <li><a href="partner_with_us.html" class="text-on-surface-variant hover:text-primary transition-colors">Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/5 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-on-surface-variant text-sm">© 2024 Instant Key. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-sm">Privacy Policy</a>
+                    <a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('text-on-surface-variant', 'hover:text-on-surface');
+                btn.classList.remove('text-on-primary-container');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName + 'Tab').classList.remove('hidden');
+
+            // Add active class to selected button
+            event.target.classList.add('tab-active');
+            event.target.classList.remove('text-on-surface-variant', 'hover:text-on-surface');
+            event.target.classList.add('text-on-primary-container');
+        }
+    </script>
+</body>
+</html></content>
+<parameter name="filePath">c:\Users\oianl\Desktop\progetto sportiello\ISTANT-KEY-progetto-scolastico-\wishlist_alerts.html

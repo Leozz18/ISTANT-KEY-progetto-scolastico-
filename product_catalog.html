@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Product Catalog - INSTANT KEY</title>
+    <meta name="description" content="Browse our complete digital gaming catalog. Find PC games, console games, software, and subscriptions with instant delivery."/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#003d42",
+                        "primary-dim": "#00ec3b",
+                        "primary": "#9cff93",
+                        "tertiary-fixed": "#0eeafd",
+                        "on-error-container": "#ffd2c8",
+                        "on-primary-container": "#005a10",
+                        "on-secondary-fixed": "#003a42",
+                        "on-surface": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005c64",
+                        "surface-variant": "#262627",
+                        "primary-fixed-dim": "#00ec3b",
+                        "surface": "#0e0e0f",
+                        "surface-tint": "#9cff93",
+                        "on-secondary": "#004d57",
+                        "secondary-fixed-dim": "#00d7f0",
+                        "primary-container": "#00fc40",
+                        "tertiary-dim": "#00dbec",
+                        "on-tertiary": "#005b63",
+                        "tertiary-container": "#0eeafd",
+                        "on-error": "#450900",
+                        "background": "#0e0e0f",
+                        "error": "#ff7351",
+                        "inverse-surface": "#fcf8f9",
+                        "on-primary": "#006413",
+                        "outline-variant": "#484849",
+                        "secondary-container": "#006875",
+                        "on-primary-fixed-variant": "#006513",
+                        "error-dim": "#d53d18",
+                        "on-secondary-container": "#e8fbff",
+                        "surface-container": "#1a191b",
+                        "primary-fixed": "#00fc40",
+                        "tertiary": "#8af2ff",
+                        "on-tertiary-container": "#005159",
+                        "surface-bright": "#2c2c2d",
+                        "surface-container-highest": "#262627",
+                        "surface-container-high": "#201f21",
+                        "error-container": "#b92902",
+                        "on-primary-fixed": "#00440a",
+                        "tertiary-fixed-dim": "#00dbec",
+                        "surface-dim": "#0e0e0f",
+                        "surface-container-lowest": "#000000",
+                        "on-surface-variant": "#adaaab",
+                        "secondary": "#00e3fd",
+                        "inverse-primary": "#006f16",
+                        "surface-container-low": "#131314",
+                        "on-secondary-fixed-variant": "#005964",
+                        "on-background": "#ffffff",
+                        "secondary-dim": "#00d4ec",
+                        "inverse-on-surface": "#565556",
+                        "outline": "#767576",
+                        "secondary-fixed": "#26e6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .kinetic-gradient {
+            background: linear-gradient(135deg, #9cff93 0%, #00fc40 100%);
+        }
+        .glass-panel {
+            background-color: rgba(14, 14, 15, 0.7);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0e0e0f]/70 backdrop-blur-xl shadow-2xl">
+        <div class="flex justify-between items-center w-full px-6 py-4 max-w-[1920px] mx-auto">
+            <div class="flex items-center gap-12">
+                <a href="index.html" class="text-2xl font-bold tracking-tighter text-[#00FF41] font-['Space_Grotesk'] hover:text-primary transition-colors">INSTANT KEY</a>
+                <div class="hidden md:flex items-center gap-8 font-['Space_Grotesk'] tracking-tight">
+                    <a class="text-[#00FF41] font-bold border-b-2 border-[#00FF41] hover:text-[#00FF41] transition-colors duration-150 ease-out" href="product_catalog.html">PC</a>
+                    <a class="text-[#adaaab] hover:text-[#00FF41] transition-colors duration-150 ease-out" href="product_catalog.html?platform=console">Console</a>
+                    <a class="text-[#adaaab] hover:text-[#00FF41] transition-colors duration-150 ease-out" href="product_catalog.html?category=software">Software</a>
+                    <a class="text-[#adaaab] hover:text-[#00FF41] transition-colors duration-150 ease-out" href="product_catalog.html?category=subscription">Subscription</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-6">
+                <!-- Search Bar -->
+                <div class="hidden lg:flex items-center bg-surface-container-highest px-4 py-2 rounded-lg gap-3 w-80 group transition-all duration-150 focus-within:ring-1 focus-within:ring-secondary/40">
+                    <span class="material-symbols-outlined text-on-surface-variant group-focus-within:text-secondary">search</span>
+                    <input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-on-surface-variant" placeholder="Search games, keys..." type="text"/>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="shopping_cart.html" class="text-[#adaaab] hover:text-[#00FF41] transition-transform active:scale-95 duration-150">
+                        <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                    </a>
+                    <a href="login.html" class="text-[#adaaab] hover:text-[#00FF41] transition-transform active:scale-95 duration-150">
+                        <span class="material-symbols-outlined" data-icon="person">person</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 min-h-screen">
+        <div class="max-w-[1920px] mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8">
+            <!-- Sidebar / Filters -->
+            <aside class="md:col-span-3 lg:col-span-2 space-y-8 sticky top-28 self-start">
+                <div class="flex items-center justify-between">
+                    <h2 class="font-headline font-bold text-lg text-primary uppercase tracking-widest">Filters</h2>
+                    <button class="text-xs uppercase text-on-surface-variant hover:text-primary tracking-widest transition-colors">Clear All</button>
+                </div>
+
+                <!-- Platform Filter -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Platform</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="px-3 py-1.5 text-xs font-bold bg-secondary-container text-on-secondary-container rounded-sm border border-secondary/20 hover:border-secondary transition-colors filter-platform active" data-platform="steam">Steam</button>
+                        <button class="px-3 py-1.5 text-xs font-bold bg-surface-container-high text-on-surface-variant rounded-sm border border-outline-variant/20 hover:border-outline-variant transition-colors filter-platform" data-platform="psn">PSN</button>
+                        <button class="px-3 py-1.5 text-xs font-bold bg-surface-container-high text-on-surface-variant rounded-sm border border-outline-variant/20 hover:border-outline-variant transition-colors filter-platform" data-platform="xbox">Xbox</button>
+                        <button class="px-3 py-1.5 text-xs font-bold bg-surface-container-high text-on-surface-variant rounded-sm border border-outline-variant/20 hover:border-outline-variant transition-colors filter-platform" data-platform="epic">Epic</button>
+                        <button class="px-3 py-1.5 text-xs font-bold bg-surface-container-high text-on-surface-variant rounded-sm border border-outline-variant/20 hover:border-outline-variant transition-colors filter-platform" data-platform="origin">Origin</button>
+                    </div>
+                </div>
+
+                <!-- Genre Filter -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Genre</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="w-4 h-4 bg-surface-container-highest border border-outline-variant rounded-sm group-hover:border-primary transition-colors filter-checkbox">
+                                <input type="checkbox" class="hidden" data-genre="action">
+                            </div>
+                            <span class="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Action</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="w-4 h-4 bg-primary-container border border-primary-container rounded-sm flex items-center justify-center filter-checkbox active">
+                                <input type="checkbox" class="hidden" data-genre="rpg" checked>
+                                <span class="material-symbols-outlined text-[12px] text-on-primary-container font-black">check</span>
+                            </div>
+                            <span class="text-sm text-on-surface">RPG</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="w-4 h-4 bg-surface-container-highest border border-outline-variant rounded-sm group-hover:border-primary transition-colors filter-checkbox">
+                                <input type="checkbox" class="hidden" data-genre="strategy">
+                            </div>
+                            <span class="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Strategy</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="w-4 h-4 bg-surface-container-highest border border-outline-variant rounded-sm group-hover:border-primary transition-colors filter-checkbox">
+                                <input type="checkbox" class="hidden" data-genre="shooter">
+                            </div>
+                            <span class="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Shooter</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="w-4 h-4 bg-surface-container-highest border border-outline-variant rounded-sm group-hover:border-primary transition-colors filter-checkbox">
+                                <input type="checkbox" class="hidden" data-genre="racing">
+                            </div>
+                            <span class="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Racing</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="w-4 h-4 bg-surface-container-highest border border-outline-variant rounded-sm group-hover:border-primary transition-colors filter-checkbox">
+                                <input type="checkbox" class="hidden" data-genre="sports">
+                            </div>
+                            <span class="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Sports</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Price Range -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Price Range</h3>
+                    <div class="relative h-1 bg-surface-container-highest rounded-full">
+                        <div class="absolute left-0 right-1/4 h-full bg-primary"></div>
+                        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full"></div>
+                        <div class="absolute right-1/4 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full"></div>
+                    </div>
+                    <div class="flex justify-between text-xs text-on-surface-variant font-mono">
+                        <span>$0</span>
+                        <span>$75</span>
+                    </div>
+                </div>
+
+                <!-- Rating -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Rating</h3>
+                    <div class="space-y-2">
+                        <button class="flex items-center gap-1 text-primary-dim filter-rating active" data-rating="4">
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg">star</span>
+                            <span class="text-xs text-on-surface-variant ml-2">&amp; up</span>
+                        </button>
+                        <button class="flex items-center gap-1 text-on-surface-variant filter-rating" data-rating="3">
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg">star</span>
+                            <span class="material-symbols-outlined text-lg">star</span>
+                            <span class="text-xs text-on-surface-variant ml-2">&amp; up</span>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <section class="md:col-span-9 lg:col-span-10">
+                <!-- Sorting & View Controls -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+                    <div class="flex items-center gap-4">
+                        <h1 class="font-headline text-3xl font-bold tracking-tighter">DIGITAL CATALOG</h1>
+                        <span class="px-2 py-0.5 bg-surface-container-high text-[10px] font-black text-primary border border-primary/10 rounded uppercase tracking-tighter">142 Results</span>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <div class="flex items-center gap-3">
+                            <span class="text-[10px] uppercase font-bold text-on-surface-variant tracking-[0.1em]">Sort By:</span>
+                            <select class="bg-surface-container-low border-none text-sm font-bold focus:ring-1 ring-primary/20 rounded px-3 py-1 cursor-pointer sort-select">
+                                <option value="popularity">Popularity</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="newest">Newest</option>
+                                <option value="rating">Rating</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 products-grid">
+                    <!-- Featured Game Card -->
+                    <div class="sm:col-span-2 lg:col-span-2 row-span-1 group relative bg-surface-container-low overflow-hidden rounded-lg transition-all duration-300 hover:bg-surface-container-high">
+                        <a href="product_details.html?id=cyberpunk-2077" class="block">
+                            <div class="aspect-[21/9] w-full relative">
+                                <img class="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" alt="Cyberpunk 2077 Phantom Liberty cinematic scene" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=800&h=360&fit=crop&crop=center"/>
+                                <div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent"></div>
+                                <div class="absolute top-4 left-4">
+                                    <span class="bg-primary px-3 py-1 text-[10px] font-black text-on-primary-container rounded uppercase tracking-tighter">-25% OFF</span>
+                                </div>
+                            </div>
+                            <div class="p-6 flex justify-between items-end">
+                                <div>
+                                    <div class="flex gap-2 mb-2">
+                                        <span class="text-[9px] font-black uppercase text-secondary tracking-widest">Global Key</span>
+                                        <span class="text-[9px] font-black uppercase text-on-surface-variant tracking-widest">Steam</span>
+                                    </div>
+                                    <h3 class="font-headline text-2xl font-bold tracking-tight">CYBERPUNK 2077: PHANTOM LIBERTY</h3>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xs text-on-surface-variant line-through">$59.99</div>
+                                    <div class="text-2xl font-black text-primary tracking-tighter">$44.99</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Regular Game Cards -->
+                    <div class="group bg-surface-container-low rounded-lg overflow-hidden flex flex-col hover:bg-surface-container-high transition-all duration-150 product-card" data-genre="rpg" data-platform="ps5" data-price="33.99" data-rating="5">
+                        <a href="product_details.html?id=elden-ring" class="flex flex-col h-full">
+                            <div class="aspect-[3/4] relative overflow-hidden">
+                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Elden Ring Shadow of Erdtree" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=300&h=400&fit=crop&crop=center"/>
+                                <div class="absolute top-3 left-3 bg-error text-[9px] font-black px-2 py-0.5 rounded tracking-tighter">-15%</div>
+                            </div>
+                            <div class="p-4 flex flex-col gap-4 flex-grow">
+                                <div>
+                                    <span class="text-[9px] font-black uppercase text-on-surface-variant tracking-[0.1em]">PlayStation 5</span>
+                                    <h4 class="text-sm font-bold mt-1 line-clamp-1">ELDEN RING: SHADOW OF ERDTREE</h4>
+                                </div>
+                                <div class="mt-auto flex items-center justify-between">
+                                    <div class="flex flex-col">
+                                        <span class="text-[10px] text-on-surface-variant line-through">$39.99</span>
+                                        <span class="text-lg font-black text-white">$33.99</span>
+                                    </div>
+                                    <button class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-90 add-to-cart">
+                                        <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="group bg-surface-container-low rounded-lg overflow-hidden flex flex-col hover:bg-surface-container-high transition-all duration-150 product-card" data-genre="shooter" data-platform="xbox" data-price="19.99" data-rating="4">
+                        <a href="product_details.html?id=halo-infinite" class="flex flex-col h-full">
+                            <div class="aspect-[3/4] relative overflow-hidden">
+                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Halo Infinite Campaign" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=300&h=400&fit=crop&crop=center"/>
+                                <div class="absolute top-3 left-3 bg-primary text-[9px] font-black px-2 py-0.5 rounded tracking-tighter">HOT</div>
+                            </div>
+                            <div class="p-4 flex flex-col gap-4 flex-grow">
+                                <div>
+                                    <span class="text-[9px] font-black uppercase text-on-surface-variant tracking-[0.1em]">Xbox Series X</span>
+                                    <h4 class="text-sm font-bold mt-1 line-clamp-1">HALO INFINITE - CAMPAIGN</h4>
+                                </div>
+                                <div class="mt-auto flex items-center justify-between">
+                                    <div class="flex flex-col">
+                                        <span class="text-[10px] text-on-surface-variant line-through">$59.99</span>
+                                        <span class="text-lg font-black text-white">$19.99</span>
+                                    </div>
+                                    <button class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-90 add-to-cart">
+                                        <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="group bg-surface-container-low rounded-lg overflow-hidden flex flex-col hover:bg-surface-container-high transition-all duration-150 product-card" data-genre="racing" data-platform="steam" data-price="49.99" data-rating="5">
+                        <a href="product_details.html?id=forza-horizon-5" class="flex flex-col h-full">
+                            <div class="aspect-[3/4] relative overflow-hidden">
+                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Forza Horizon 5 Premium" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=300&h=400&fit=crop&crop=center"/>
+                            </div>
+                            <div class="p-4 flex flex-col gap-4 flex-grow">
+                                <div>
+                                    <span class="text-[9px] font-black uppercase text-on-surface-variant tracking-[0.1em]">Steam Key</span>
+                                    <h4 class="text-sm font-bold mt-1 line-clamp-1">FORZA HORIZON 5: PREMIUM</h4>
+                                </div>
+                                <div class="mt-auto flex items-center justify-between">
+                                    <div class="flex flex-col">
+                                        <span class="text-lg font-black text-white">$49.99</span>
+                                    </div>
+                                    <button class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-90 add-to-cart">
+                                        <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="group bg-surface-container-low rounded-lg overflow-hidden flex flex-col hover:bg-surface-container-high transition-all duration-150 product-card" data-genre="action" data-platform="steam" data-price="29.99" data-rating="4">
+                        <a href="product_details.html?id=alan-wake-2" class="flex flex-col h-full">
+                            <div class="aspect-[3/4] relative overflow-hidden">
+                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Alan Wake 2" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=300&h=400&fit=crop&crop=center"/>
+                                <div class="absolute top-3 left-3 bg-primary text-[9px] font-black px-2 py-0.5 rounded tracking-tighter">NEW</div>
+                            </div>
+                            <div class="p-4 flex flex-col gap-4 flex-grow">
+                                <div>
+                                    <span class="text-[9px] font-black uppercase text-on-surface-variant tracking-[0.1em]">Steam Key</span>
+                                    <h4 class="text-sm font-bold mt-1 line-clamp-1">ALAN WAKE 2</h4>
+                                </div>
+                                <div class="mt-auto flex items-center justify-between">
+                                    <div class="flex flex-col">
+                                        <span class="text-lg font-black text-white">$29.99</span>
+                                    </div>
+                                    <button class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-90 add-to-cart">
+                                        <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="group bg-surface-container-low rounded-lg overflow-hidden flex flex-col hover:bg-surface-container-high transition-all duration-150 product-card" data-genre="action" data-platform="ps5" data-price="39.99" data-rating="5">
+                        <a href="product_details.html?id=spider-man-2" class="flex flex-col h-full">
+                            <div class="aspect-[3/4] relative overflow-hidden">
+                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Marvel's Spider-Man 2" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=300&h=400&fit=crop&crop=center"/>
+                                <div class="absolute top-3 left-3 bg-error text-[9px] font-black px-2 py-0.5 rounded tracking-tighter">-25%</div>
+                            </div>
+                            <div class="p-4 flex flex-col gap-4 flex-grow">
+                                <div>
+                                    <span class="text-[9px] font-black uppercase text-on-surface-variant tracking-[0.1em]">PlayStation 5</span>
+                                    <h4 class="text-sm font-bold mt-1 line-clamp-1">MARVEL'S SPIDER-MAN 2</h4>
+                                </div>
+                                <div class="mt-auto flex items-center justify-between">
+                                    <div class="flex flex-col">
+                                        <span class="text-[10px] text-on-surface-variant line-through">$49.99</span>
+                                        <span class="text-lg font-black text-white">$39.99</span>
+                                    </div>
+                                    <button class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-90 add-to-cart">
+                                        <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="group bg-surface-container-low rounded-lg overflow-hidden flex flex-col hover:bg-surface-container-high transition-all duration-150 product-card" data-genre="rpg" data-platform="steam" data-price="59.99" data-rating="5">
+                        <a href="product_details.html?id=diablo-4" class="flex flex-col h-full">
+                            <div class="aspect-[3/4] relative overflow-hidden">
+                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Diablo IV" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=300&h=400&fit=crop&crop=center"/>
+                                <div class="absolute top-3 left-3 bg-error text-[9px] font-black px-2 py-0.5 rounded tracking-tighter">-40%</div>
+                            </div>
+                            <div class="p-4 flex flex-col gap-4 flex-grow">
+                                <div>
+                                    <span class="text-[9px] font-black uppercase text-on-surface-variant tracking-[0.1em]">Steam Key</span>
+                                    <h4 class="text-sm font-bold mt-1 line-clamp-1">DIABLO IV</h4>
+                                </div>
+                                <div class="mt-auto flex items-center justify-between">
+                                    <div class="flex flex-col">
+                                        <span class="text-[10px] text-on-surface-variant line-through">$69.99</span>
+                                        <span class="text-lg font-black text-white">$59.99</span>
+                                    </div>
+                                    <button class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-90 add-to-cart">
+                                        <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="group bg-surface-container-low rounded-lg overflow-hidden flex flex-col hover:bg-surface-container-high transition-all duration-150 product-card" data-genre="action" data-platform="steam" data-price="39.99" data-rating="4">
+                        <a href="product_details.html?id=resident-evil-4" class="flex flex-col h-full">
+                            <div class="aspect-[3/4] relative overflow-hidden">
+                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Resident Evil 4 Remake" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=300&h=400&fit=crop&crop=center"/>
+                                <div class="absolute top-3 left-3 bg-primary text-[9px] font-black px-2 py-0.5 rounded tracking-tighter">NEW</div>
+                            </div>
+                            <div class="p-4 flex flex-col gap-4 flex-grow">
+                                <div>
+                                    <span class="text-[9px] font-black uppercase text-on-surface-variant tracking-[0.1em]">Steam Key</span>
+                                    <h4 class="text-sm font-bold mt-1 line-clamp-1">RESIDENT EVIL 4</h4>
+                                </div>
+                                <div class="mt-auto flex items-center justify-between">
+                                    <div class="flex flex-col">
+                                        <span class="text-lg font-black text-white">$39.99</span>
+                                    </div>
+                                    <button class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-90 add-to-cart">
+                                        <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div class="col-span-full flex justify-center mt-12">
+                        <button class="bg-surface-container-high hover:bg-surface-container-highest text-on-surface px-8 py-4 rounded-lg font-headline font-bold transition-all load-more">
+                            LOAD MORE GAMES
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-low border-t border-white/5 mt-16">
+        <div class="max-w-[1920px] mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="md:col-span-2">
+                    <div class="text-2xl font-bold tracking-tighter text-[#00FF41] font-['Space_Grotesk'] mb-6">INSTANT KEY</div>
+                    <p class="text-on-surface-variant mb-6 max-w-md">Experience the kinetic pulse of instant gaming. The fastest, most secure digital gaming marketplace.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">share</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">forum</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">mail</span>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-headline font-bold text-lg mb-6">Platform</h4>
+                    <ul class="space-y-3">
+                        <li><a href="product_catalog.html" class="text-on-surface-variant hover:text-primary transition-colors">PC Games</a></li>
+                        <li><a href="product_catalog.html?platform=console" class="text-on-surface-variant hover:text-primary transition-colors">Console Games</a></li>
+                        <li><a href="product_catalog.html?category=software" class="text-on-surface-variant hover:text-primary transition-colors">Software</a></li>
+                        <li><a href="product_catalog.html?category=subscription" class="text-on-surface-variant hover:text-primary transition-colors">Subscriptions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-headline font-bold text-lg mb-6">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="support_faq.html" class="text-on-surface-variant hover:text-primary transition-colors">FAQ</a></li>
+                        <li><a href="submit_ticket.html" class="text-on-surface-variant hover:text-primary transition-colors">Support</a></li>
+                        <li><a href="verified_reviews.html" class="text-on-surface-variant hover:text-primary transition-colors">Reviews</a></li>
+                        <li><a href="partner_with_us.html" class="text-on-surface-variant hover:text-primary transition-colors">Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/5 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-on-surface-variant text-sm">© 2024 Instant Key. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-sm">Privacy Policy</a>
+                    <a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const filterCheckboxes = document.querySelectorAll('.filter-checkbox');
+        const filterPlatforms = document.querySelectorAll('.filter-platform');
+        const filterRatings = document.querySelectorAll('.filter-rating');
+        const productCards = document.querySelectorAll('.product-card');
+        const sortSelect = document.querySelector('.sort-select');
+
+        function applyFilters() {
+            const activeGenres = Array.from(filterCheckboxes)
+                .filter(cb => cb.querySelector('input').checked)
+                .map(cb => cb.querySelector('input').dataset.genre);
+
+            const activePlatforms = Array.from(filterPlatforms)
+                .filter(btn => btn.classList.contains('active'))
+                .map(btn => btn.dataset.platform);
+
+            const activeRating = Array.from(filterRatings)
+                .find(btn => btn.classList.contains('active'))?.dataset.rating;
+
+            productCards.forEach(card => {
+                const cardGenre = card.dataset.genre;
+                const cardPlatform = card.dataset.platform;
+                const cardRating = card.dataset.rating;
+
+                const genreMatch = activeGenres.length === 0 || activeGenres.includes(cardGenre);
+                const platformMatch = activePlatforms.length === 0 || activePlatforms.includes(cardPlatform);
+                const ratingMatch = !activeRating || parseInt(cardRating) >= parseInt(activeRating);
+
+                if (genreMatch && platformMatch && ratingMatch) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Platform filter buttons
+        filterPlatforms.forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('active');
+                if (btn.classList.contains('active')) {
+                    btn.classList.remove('bg-surface-container-high', 'text-on-surface-variant', 'border-outline-variant/20');
+                    btn.classList.add('bg-secondary-container', 'text-on-secondary-container', 'border-secondary/20');
+                } else {
+                    btn.classList.add('bg-surface-container-high', 'text-on-surface-variant', 'border-outline-variant/20');
+                    btn.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'border-secondary/20');
+                }
+                applyFilters();
+            });
+        });
+
+        // Genre checkboxes
+        filterCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('click', () => {
+                const input = checkbox.querySelector('input');
+                input.checked = !input.checked;
+
+                if (input.checked) {
+                    checkbox.classList.remove('bg-surface-container-highest', 'border-outline-variant');
+                    checkbox.classList.add('bg-primary-container', 'border-primary-container');
+                    checkbox.innerHTML = '<input type="checkbox" class="hidden" data-genre="' + input.dataset.genre + '" checked><span class="material-symbols-outlined text-[12px] text-on-primary-container font-black">check</span>';
+                } else {
+                    checkbox.classList.add('bg-surface-container-highest', 'border-outline-variant');
+                    checkbox.classList.remove('bg-primary-container', 'border-primary-container');
+                    checkbox.innerHTML = '<input type="checkbox" class="hidden" data-genre="' + input.dataset.genre + '">';
+                }
+                applyFilters();
+            });
+        });
+
+        // Rating filters
+        filterRatings.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterRatings.forEach(b => b.classList.remove('active', 'text-primary-dim'));
+                filterRatings.forEach(b => b.classList.add('text-on-surface-variant'));
+                btn.classList.add('active', 'text-primary-dim');
+                btn.classList.remove('text-on-surface-variant');
+                applyFilters();
+            });
+        });
+
+        // Sorting
+        sortSelect.addEventListener('change', () => {
+            const sortBy = sortSelect.value;
+            const grid = document.querySelector('.products-grid');
+            const cards = Array.from(productCards);
+
+            cards.sort((a, b) => {
+                const aPrice = parseFloat(a.dataset.price);
+                const bPrice = parseFloat(b.dataset.price);
+                const aRating = parseInt(a.dataset.rating);
+                const bRating = parseInt(b.dataset.rating);
+
+                switch(sortBy) {
+                    case 'price-low':
+                        return aPrice - bPrice;
+                    case 'price-high':
+                        return bPrice - aPrice;
+                    case 'rating':
+                        return bRating - aRating;
+                    case 'newest':
+                        // For demo, sort by price as proxy for "newest"
+                        return bPrice - aPrice;
+                    default:
+                        return 0;
+                }
+            });
+
+            cards.forEach(card => grid.appendChild(card));
+        });
+
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                btn.innerHTML = '<span class="material-symbols-outlined text-on-primary">check</span>';
+                btn.classList.add('bg-primary', 'text-on-primary');
+                setTimeout(() => {
+                    btn.innerHTML = '<span class="material-symbols-outlined">shopping_cart</span>';
+                    btn.classList.remove('bg-primary', 'text-on-primary');
+                }, 1000);
+            });
+        });
+
+        // Load more functionality
+        document.querySelector('.load-more').addEventListener('click', () => {
+            // In a real app, this would load more products from an API
+            alert('Loading more games... (This would load additional products in a real implementation)');
+        });
+    </script>
+</body>
+</html></content>
+<parameter name="filePath">c:\Users\oianl\Desktop\progetto sportiello\ISTANT-KEY-progetto-scolastico-\product_catalog.html

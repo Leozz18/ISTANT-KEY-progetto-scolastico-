@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Registration - INSTANT KEY</title>
+    <meta name="description" content="Create your INSTANT KEY account with two-factor authentication for enhanced security."/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#003d42",
+                        "primary-dim": "#00ec3b",
+                        "primary": "#9cff93",
+                        "tertiary-fixed": "#0eeafd",
+                        "on-error-container": "#ffd2c8",
+                        "on-primary-container": "#005a10",
+                        "on-secondary-fixed": "#003a42",
+                        "on-surface": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005c64",
+                        "surface-variant": "#262627",
+                        "primary-fixed-dim": "#00ec3b",
+                        "surface": "#0e0e0f",
+                        "surface-tint": "#9cff93",
+                        "on-secondary": "#004d57",
+                        "secondary-fixed-dim": "#00d7f0",
+                        "primary-container": "#00fc40",
+                        "tertiary-dim": "#00dbec",
+                        "on-tertiary": "#005b63",
+                        "tertiary-container": "#0eeafd",
+                        "on-error": "#450900",
+                        "background": "#0e0e0f",
+                        "error": "#ff7351",
+                        "inverse-surface": "#fcf8f9",
+                        "on-primary": "#006413",
+                        "outline-variant": "#484849",
+                        "secondary-container": "#006875",
+                        "on-primary-fixed-variant": "#006513",
+                        "error-dim": "#d53d18",
+                        "on-secondary-container": "#e8fbff",
+                        "surface-container": "#1a191b",
+                        "primary-fixed": "#00fc40",
+                        "tertiary": "#8af2ff",
+                        "on-tertiary-container": "#005159",
+                        "surface-bright": "#2c2c2d",
+                        "surface-container-highest": "#262627",
+                        "surface-container-high": "#201f21",
+                        "error-container": "#b92902",
+                        "on-primary-fixed": "#00440a",
+                        "tertiary-fixed-dim": "#00dbec",
+                        "surface-dim": "#0e0e0f",
+                        "surface-container-lowest": "#000000",
+                        "on-surface-variant": "#adaaab",
+                        "secondary": "#00e3fd",
+                        "inverse-primary": "#006f16",
+                        "surface-container-low": "#131314",
+                        "on-secondary-fixed-variant": "#005964",
+                        "on-background": "#ffffff",
+                        "secondary-dim": "#00d4ec",
+                        "inverse-on-surface": "#565556",
+                        "outline": "#767576",
+                        "secondary-fixed": "#26e6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .kinetic-gradient {
+            background: linear-gradient(135deg, #9cff93 0%, #00fc40 100%);
+        }
+        .step-active {
+            background: linear-gradient(135deg, #9cff93 0%, #00fc40 100%);
+            color: #006413;
+        }
+        .step-completed {
+            background-color: rgba(156, 255, 147, 0.2);
+            color: #9cff93;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0e0e0f]/70 backdrop-blur-xl shadow-2xl">
+        <div class="flex justify-between items-center w-full px-6 py-4 max-w-[1920px] mx-auto">
+            <div class="flex items-center gap-12">
+                <a href="index.html" class="text-2xl font-bold tracking-tighter text-[#00FF41] font-['Space_Grotesk'] hover:text-primary transition-colors">INSTANT KEY</a>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="login.html" class="text-[#adaaab] hover:text-[#00FF41] transition-colors">Already have an account? Sign in</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-16 flex-grow flex items-center justify-center">
+        <div class="max-w-md w-full mx-6">
+            <!-- Progress Steps -->
+            <div class="flex justify-center mb-8">
+                <div class="flex items-center gap-4">
+                    <div class="w-8 h-8 rounded-full step-completed flex items-center justify-center text-sm font-medium">1</div>
+                    <div class="w-8 h-8 rounded-full step-active flex items-center justify-center text-sm font-medium">2</div>
+                    <div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center text-sm font-medium">3</div>
+                </div>
+            </div>
+
+            <!-- 2FA Setup -->
+            <div class="bg-surface-container-low p-8 rounded-xl border border-white/5">
+                <div class="text-center mb-8">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="material-symbols-outlined text-3xl text-primary">security</span>
+                    </div>
+                    <h1 class="text-2xl font-headline font-bold mb-2">Set Up Two-Factor Authentication</h1>
+                    <p class="text-on-surface-variant">Add an extra layer of security to your account</p>
+                </div>
+
+                <!-- 2FA Options -->
+                <div class="space-y-4 mb-8">
+                    <div class="bg-surface-container-highest p-4 rounded-lg border border-outline-variant/20">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center">
+                                <span class="material-symbols-outlined text-secondary">smartphone</span>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">Authenticator App</h3>
+                                <p class="text-on-surface-variant text-sm">Use Google Authenticator, Authy, or similar</p>
+                            </div>
+                        </div>
+                        <button onclick="select2FAMethod('app')" class="w-full kinetic-gradient text-on-primary-container py-2 rounded-lg font-medium hover:brightness-110 transition-all">
+                            Set Up Authenticator
+                        </button>
+                    </div>
+
+                    <div class="bg-surface-container-highest p-4 rounded-lg border border-outline-variant/20">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-tertiary/20 rounded-lg flex items-center justify-center">
+                                <span class="material-symbols-outlined text-tertiary">sms</span>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">SMS Authentication</h3>
+                                <p class="text-on-surface-variant text-sm">Receive codes via text message</p>
+                            </div>
+                        </div>
+                        <button onclick="select2FAMethod('sms')" class="w-full bg-surface-container-low hover:bg-surface-container-high text-on-surface py-2 rounded-lg font-medium transition-all">
+                            Set Up SMS
+                        </button>
+                    </div>
+
+                    <div class="bg-surface-container-highest p-4 rounded-lg border border-outline-variant/20">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-error/20 rounded-lg flex items-center justify-center">
+                                <span class="material-symbols-outlined text-error">mail</span>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">Email Authentication</h3>
+                                <p class="text-on-surface-variant text-sm">Receive codes via email</p>
+                            </div>
+                        </div>
+                        <button onclick="select2FAMethod('email')" class="w-full bg-surface-container-low hover:bg-surface-container-high text-on-surface py-2 rounded-lg font-medium transition-all">
+                            Set Up Email
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Skip Option -->
+                <div class="text-center">
+                    <button onclick="skip2FA()" class="text-on-surface-variant hover:text-on-surface transition-colors text-sm underline">
+                        Skip for now (not recommended)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Authenticator Setup Modal (Hidden by default) -->
+            <div id="authenticatorModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-6">
+                <div class="bg-surface-container-low p-8 rounded-xl border border-white/5 max-w-md w-full">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-headline font-bold">Set Up Authenticator</h2>
+                        <button onclick="closeModal()" class="text-on-surface-variant hover:text-on-surface">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="text-center">
+                            <div class="w-32 h-32 bg-white p-4 rounded-lg mx-auto mb-4">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=128x128&data=otpauth://totp/Instant%20Key:alex@example.com?secret=JBSWY3DPEHPK3PXP&issuer=Instant%20Key" alt="QR Code" class="w-full h-full">
+                            </div>
+                            <p class="text-on-surface-variant text-sm mb-4">Scan this QR code with your authenticator app</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-2">Or enter this code manually:</label>
+                            <div class="bg-surface-container-highest p-3 rounded-lg font-mono text-sm text-center">
+                                JBSWY3DPEHPK3PXP
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="authCode" class="block text-sm font-medium text-on-surface mb-2">Enter 6-digit code</label>
+                            <input type="text" id="authCode" maxlength="6" placeholder="000000" class="w-full bg-surface-container-highest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface text-center text-2xl font-mono tracking-widest focus:ring-2 focus:ring-primary/40 focus:border-primary/40 transition-all"/>
+                        </div>
+
+                        <button onclick="verifyAuthenticator()" class="w-full kinetic-gradient text-on-primary-container py-3 rounded-lg font-headline font-bold hover:brightness-110 active:scale-95 transition-all">
+                            Verify & Complete Setup
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SMS Setup Modal (Hidden by default) -->
+            <div id="smsModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-6">
+                <div class="bg-surface-container-low p-8 rounded-xl border border-white/5 max-w-md w-full">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-headline font-bold">Set Up SMS Authentication</h2>
+                        <button onclick="closeModal()" class="text-on-surface-variant hover:text-on-surface">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <label for="phoneNumber" class="block text-sm font-medium text-on-surface mb-2">Phone Number</label>
+                            <input type="tel" id="phoneNumber" placeholder="+1 (555) 123-4567" class="w-full bg-surface-container-highest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/40 focus:border-primary/40 transition-all"/>
+                        </div>
+
+                        <button onclick="sendSMSCode()" class="w-full kinetic-gradient text-on-primary-container py-3 rounded-lg font-medium hover:brightness-110 transition-all">
+                            Send Verification Code
+                        </button>
+
+                        <div id="smsCodeSection" class="hidden">
+                            <label for="smsCode" class="block text-sm font-medium text-on-surface mb-2">Enter 6-digit code</label>
+                            <input type="text" id="smsCode" maxlength="6" placeholder="000000" class="w-full bg-surface-container-highest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface text-center text-2xl font-mono tracking-widest focus:ring-2 focus:ring-primary/40 focus:border-primary/40 transition-all"/>
+                            <button onclick="verifySMS()" class="w-full kinetic-gradient text-on-primary-container py-3 rounded-lg font-headline font-bold hover:brightness-110 active:scale-95 transition-all mt-4">
+                                Verify & Complete Setup
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-low border-t border-white/5 mt-16">
+        <div class="max-w-[1920px] mx-auto px-6 py-8">
+            <div class="text-center">
+                <p class="text-on-surface-variant text-sm">© 2024 Instant Key. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let selectedMethod = '';
+
+        function select2FAMethod(method) {
+            selectedMethod = method;
+            if (method === 'app') {
+                document.getElementById('authenticatorModal').classList.remove('hidden');
+            } else if (method === 'sms') {
+                document.getElementById('smsModal').classList.remove('hidden');
+            } else if (method === 'email') {
+                // For demo purposes, just complete the setup
+                completeRegistration();
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('authenticatorModal').classList.add('hidden');
+            document.getElementById('smsModal').classList.add('hidden');
+        }
+
+        function verifyAuthenticator() {
+            const code = document.getElementById('authCode').value;
+            if (code.length === 6) {
+                completeRegistration();
+            } else {
+                alert('Please enter a valid 6-digit code');
+            }
+        }
+
+        function sendSMSCode() {
+            const phone = document.getElementById('phoneNumber').value;
+            if (phone) {
+                document.getElementById('smsCodeSection').classList.remove('hidden');
+                alert('Verification code sent to ' + phone);
+            } else {
+                alert('Please enter a valid phone number');
+            }
+        }
+
+        function verifySMS() {
+            const code = document.getElementById('smsCode').value;
+            if (code.length === 6) {
+                completeRegistration();
+            } else {
+                alert('Please enter a valid 6-digit code');
+            }
+        }
+
+        function skip2FA() {
+            if (confirm('Are you sure? Two-factor authentication adds important security to your account.')) {
+                completeRegistration();
+            }
+        }
+
+        function completeRegistration() {
+            alert('Registration completed successfully! Welcome to INSTANT KEY.');
+            window.location.href = 'user_dashboard.html';
+        }
+    </script>
+</body>
+</html></content>
+<parameter name="filePath">c:\Users\oianl\Desktop\progetto sportiello\ISTANT-KEY-progetto-scolastico-\registration_2fa.html

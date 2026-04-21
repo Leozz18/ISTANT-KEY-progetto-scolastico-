@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Shopping Cart - INSTANT KEY</title>
+    <meta name="description" content="Review your shopping cart and proceed to checkout for instant game delivery."/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#003d42",
+                        "primary-dim": "#00ec3b",
+                        "primary": "#9cff93",
+                        "tertiary-fixed": "#0eeafd",
+                        "on-error-container": "#ffd2c8",
+                        "on-primary-container": "#005a10",
+                        "on-secondary-fixed": "#003a42",
+                        "on-surface": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005c64",
+                        "surface-variant": "#262627",
+                        "primary-fixed-dim": "#00ec3b",
+                        "surface": "#0e0e0f",
+                        "surface-tint": "#9cff93",
+                        "on-secondary": "#004d57",
+                        "secondary-fixed-dim": "#00d7f0",
+                        "primary-container": "#00fc40",
+                        "tertiary-dim": "#00dbec",
+                        "on-tertiary": "#005b63",
+                        "tertiary-container": "#0eeafd",
+                        "on-error": "#450900",
+                        "background": "#0e0e0f",
+                        "error": "#ff7351",
+                        "inverse-surface": "#fcf8f9",
+                        "on-primary": "#006413",
+                        "outline-variant": "#484849",
+                        "secondary-container": "#006875",
+                        "on-primary-fixed-variant": "#006513",
+                        "error-dim": "#d53d18",
+                        "on-secondary-container": "#e8fbff",
+                        "surface-container": "#1a191b",
+                        "primary-fixed": "#00fc40",
+                        "tertiary": "#8af2ff",
+                        "on-tertiary-container": "#005159",
+                        "surface-bright": "#2c2c2d",
+                        "surface-container-highest": "#262627",
+                        "surface-container-high": "#201f21",
+                        "error-container": "#b92902",
+                        "on-primary-fixed": "#00440a",
+                        "tertiary-fixed-dim": "#00dbec",
+                        "surface-dim": "#0e0e0f",
+                        "surface-container-lowest": "#000000",
+                        "on-surface-variant": "#adaaab",
+                        "secondary": "#00e3fd",
+                        "inverse-primary": "#006f16",
+                        "surface-container-low": "#131314",
+                        "on-secondary-fixed-variant": "#005964",
+                        "on-background": "#ffffff",
+                        "secondary-dim": "#00d4ec",
+                        "inverse-on-surface": "#565556",
+                        "outline": "#767576",
+                        "secondary-fixed": "#26e6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .kinetic-gradient {
+            background: linear-gradient(135deg, #9cff93 0%, #00fc40 100%);
+        }
+        .glass-panel {
+            background: rgba(14, 14, 15, 0.7);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0e0e0f]/70 backdrop-blur-xl shadow-2xl">
+        <div class="flex justify-between items-center w-full px-6 py-4 max-w-[1920px] mx-auto">
+            <div class="flex items-center gap-12">
+                <a href="index.html" class="text-2xl font-bold tracking-tighter text-[#00FF41] font-['Space_Grotesk'] hover:text-primary transition-colors">INSTANT KEY</a>
+                <div class="hidden md:flex items-center gap-8 font-['Space_Grotesk'] tracking-tight">
+                    <a class="text-[#adaaab] hover:text-[#00FF41] transition-colors duration-150 ease-out" href="product_catalog.html">PC</a>
+                    <a class="text-[#adaaab] hover:text-[#00FF41] transition-colors duration-150 ease-out" href="product_catalog.html?platform=console">Console</a>
+                    <a class="text-[#adaaab] hover:text-[#00FF41] transition-colors duration-150 ease-out" href="product_catalog.html?category=software">Software</a>
+                    <a class="text-[#adaaab] hover:text-[#00FF41] transition-colors duration-150 ease-out" href="product_catalog.html?category=subscription">Subscription</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="flex items-center gap-4">
+                    <a href="shopping_cart.html" class="text-[#00FF41] transition-transform active:scale-95 duration-150">
+                        <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                    </a>
+                    <a href="login.html" class="text-[#adaaab] hover:text-[#00FF41] transition-transform active:scale-95 duration-150">
+                        <span class="material-symbols-outlined" data-icon="person">person</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Header -->
+            <div class="mb-8">
+                <h1 class="text-4xl font-headline font-bold mb-2">Shopping Cart</h1>
+                <p class="text-on-surface-variant">Review your items before checkout</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Cart Items -->
+                <div class="lg:col-span-2 space-y-6">
+                    <!-- Cart Item 1 -->
+                    <div class="bg-surface-container-low p-6 rounded-xl border border-white/5 cart-item" data-price="44.99">
+                        <div class="flex gap-6">
+                            <div class="w-24 h-24 bg-surface-container-high rounded-lg overflow-hidden flex-shrink-0">
+                                <img class="w-full h-full object-cover" alt="Cyberpunk 2077" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=96&h=96&fit=crop&crop=center"/>
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div>
+                                        <h3 class="font-headline font-bold text-lg mb-1">Cyberpunk 2077: Phantom Liberty</h3>
+                                        <p class="text-on-surface-variant text-sm">CD Projekt RED • Steam Key</p>
+                                    </div>
+                                    <button class="text-on-surface-variant hover:text-error transition-colors remove-item">
+                                        <span class="material-symbols-outlined">delete</span>
+                                    </button>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <button class="w-8 h-8 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all quantity-btn" data-action="decrease">
+                                            <span class="material-symbols-outlined text-sm">remove</span>
+                                        </button>
+                                        <span class="w-12 text-center font-medium quantity">1</span>
+                                        <button class="w-8 h-8 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all quantity-btn" data-action="increase">
+                                            <span class="material-symbols-outlined text-sm">add</span>
+                                        </button>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="text-lg font-headline font-bold text-primary">$44.99</div>
+                                        <div class="text-on-surface-variant text-sm line-through">$59.99</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cart Item 2 -->
+                    <div class="bg-surface-container-low p-6 rounded-xl border border-white/5 cart-item" data-price="39.99">
+                        <div class="flex gap-6">
+                            <div class="w-24 h-24 bg-surface-container-high rounded-lg overflow-hidden flex-shrink-0">
+                                <img class="w-full h-full object-cover" alt="Marvel's Spider-Man 2" src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=96&h=96&fit=crop&crop=center"/>
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div>
+                                        <h3 class="font-headline font-bold text-lg mb-1">Marvel's Spider-Man 2</h3>
+                                        <p class="text-on-surface-variant text-sm">Insomniac Games • PlayStation 5</p>
+                                    </div>
+                                    <button class="text-on-surface-variant hover:text-error transition-colors remove-item">
+                                        <span class="material-symbols-outlined">delete</span>
+                                    </button>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <button class="w-8 h-8 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all quantity-btn" data-action="decrease">
+                                            <span class="material-symbols-outlined text-sm">remove</span>
+                                        </button>
+                                        <span class="w-12 text-center font-medium quantity">1</span>
+                                        <button class="w-8 h-8 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all quantity-btn" data-action="increase">
+                                            <span class="material-symbols-outlined text-sm">add</span>
+                                        </button>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="text-lg font-headline font-bold text-primary">$39.99</div>
+                                        <div class="text-on-surface-variant text-sm line-through">$49.99</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Empty Cart State (Hidden by default) -->
+                    <div class="bg-surface-container-low p-12 rounded-xl border border-white/5 text-center hidden empty-cart">
+                        <div class="w-24 h-24 bg-surface-container-high rounded-full flex items-center justify-center mx-auto mb-6">
+                            <span class="material-symbols-outlined text-4xl text-on-surface-variant">shopping_cart</span>
+                        </div>
+                        <h3 class="font-headline font-bold text-xl mb-2">Your cart is empty</h3>
+                        <p class="text-on-surface-variant mb-6">Add some games to get started!</p>
+                        <a href="product_catalog.html" class="kinetic-gradient text-on-primary-container px-8 py-4 rounded-lg font-headline font-bold hover:brightness-110 transition-all inline-flex items-center gap-2">
+                            <span class="material-symbols-outlined">shopping_bag</span>
+                            Browse Games
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="lg:col-span-1">
+                    <div class="bg-surface-container-low p-6 rounded-xl border border-white/5 sticky top-28">
+                        <h2 class="font-headline font-bold text-xl mb-6">Order Summary</h2>
+
+                        <div class="space-y-4 mb-6">
+                            <div class="flex justify-between">
+                                <span class="text-on-surface-variant">Subtotal (2 items)</span>
+                                <span class="font-medium">$84.98</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-on-surface-variant">Tax</span>
+                                <span class="font-medium">$8.50</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-on-surface-variant">Delivery</span>
+                                <span class="text-secondary font-medium">FREE</span>
+                            </div>
+                            <div class="border-t border-white/5 pt-4">
+                                <div class="flex justify-between text-lg font-headline font-bold">
+                                    <span>Total</span>
+                                    <span class="text-primary">$93.48</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="material-symbols-outlined text-secondary text-lg">bolt</span>
+                                <span class="text-on-surface-variant">Instant delivery in under 5 seconds</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="material-symbols-outlined text-primary text-lg">verified</span>
+                                <span class="text-on-surface-variant">Official keys guaranteed</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="material-symbols-outlined text-tertiary text-lg">security</span>
+                                <span class="text-on-surface-variant">Secure payment processing</span>
+                            </div>
+                        </div>
+
+                        <a href="checkout.html" class="w-full kinetic-gradient text-on-primary-container py-4 rounded-lg font-headline font-bold text-lg hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 mb-4 checkout-btn">
+                            <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                            Proceed to Checkout
+                        </a>
+
+                        <a href="product_catalog.html" class="w-full bg-surface-container-highest hover:bg-surface-container-high text-on-surface py-3 rounded-lg font-medium transition-all flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined">add_shopping_cart</span>
+                            Continue Shopping
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommended Products -->
+            <div class="mt-16">
+                <h2 class="text-2xl font-headline font-bold mb-8">You might also like</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <a href="product_details.html?id=elden-ring" class="group">
+                        <div class="bg-surface-container-high rounded-xl overflow-hidden hover:bg-surface-container-highest transition-all duration-300 ring-1 ring-white/5 hover:ring-primary/20">
+                            <div class="relative">
+                                <img class="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-500" alt="Elden Ring" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=300&h=400&fit=crop&crop=center"/>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-headline font-bold text-lg mb-1">Elden Ring</h3>
+                                <p class="text-on-surface-variant text-sm mb-2">FromSoftware</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-primary font-headline font-bold text-xl">$42.99</span>
+                                    <span class="text-on-surface-variant text-xs">STEAM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="product_details.html?id=god-of-war" class="group">
+                        <div class="bg-surface-container-high rounded-xl overflow-hidden hover:bg-surface-container-highest transition-all duration-300 ring-1 ring-white/5 hover:ring-primary/20">
+                            <div class="relative">
+                                <img class="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-500" alt="God of War Ragnarök" src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=300&h=400&fit=crop&crop=center"/>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-headline font-bold text-lg mb-1">God of War Ragnarök</h3>
+                                <p class="text-on-surface-variant text-sm mb-2">Santa Monica Studio</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-primary font-headline font-bold text-xl">$49.99</span>
+                                    <span class="text-on-surface-variant text-xs">PS5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="product_details.html?id=the-last-of-us" class="group">
+                        <div class="bg-surface-container-high rounded-xl overflow-hidden hover:bg-surface-container-highest transition-all duration-300 ring-1 ring-white/5 hover:ring-primary/20">
+                            <div class="relative">
+                                <img class="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-500" alt="The Last of Us Part I" src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=300&h=400&fit=crop&crop=center"/>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-headline font-bold text-lg mb-1">The Last of Us Part I</h3>
+                                <p class="text-on-surface-variant text-sm mb-2">Naughty Dog</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-primary font-headline font-bold text-xl">$39.99</span>
+                                    <span class="text-on-surface-variant text-xs">PS5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="product_details.html?id=diablo-4" class="group">
+                        <div class="bg-surface-container-high rounded-xl overflow-hidden hover:bg-surface-container-highest transition-all duration-300 ring-1 ring-white/5 hover:ring-primary/20">
+                            <div class="relative">
+                                <img class="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-500" alt="Diablo IV" src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=300&h=400&fit=crop&crop=center"/>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-headline font-bold text-lg mb-1">Diablo IV</h3>
+                                <p class="text-on-surface-variant text-sm mb-2">Blizzard Entertainment</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-primary font-headline font-bold text-xl">$59.99</span>
+                                    <span class="text-on-surface-variant text-xs">STEAM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-low border-t border-white/5 mt-16">
+        <div class="max-w-[1920px] mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="md:col-span-2">
+                    <div class="text-2xl font-bold tracking-tighter text-[#00FF41] font-['Space_Grotesk'] mb-6">INSTANT KEY</div>
+                    <p class="text-on-surface-variant mb-6 max-w-md">Experience the kinetic pulse of instant gaming. The fastest, most secure digital gaming marketplace.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">share</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">forum</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">mail</span>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-headline font-bold text-lg mb-6">Platform</h4>
+                    <ul class="space-y-3">
+                        <li><a href="product_catalog.html" class="text-on-surface-variant hover:text-primary transition-colors">PC Games</a></li>
+                        <li><a href="product_catalog.html?platform=console" class="text-on-surface-variant hover:text-primary transition-colors">Console Games</a></li>
+                        <li><a href="product_catalog.html?category=software" class="text-on-surface-variant hover:text-primary transition-colors">Software</a></li>
+                        <li><a href="product_catalog.html?category=subscription" class="text-on-surface-variant hover:text-primary transition-colors">Subscriptions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-headline font-bold text-lg mb-6">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="support_faq.html" class="text-on-surface-variant hover:text-primary transition-colors">FAQ</a></li>
+                        <li><a href="submit_ticket.html" class="text-on-surface-variant hover:text-primary transition-colors">Support</a></li>
+                        <li><a href="verified_reviews.html" class="text-on-surface-variant hover:text-primary transition-colors">Reviews</a></li>
+                        <li><a href="partner_with_us.html" class="text-on-surface-variant hover:text-primary transition-colors">Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/5 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-on-surface-variant text-sm">© 2024 Instant Key. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-sm">Privacy Policy</a>
+                    <a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cart functionality
+        function updateCartTotal() {
+            const cartItems = document.querySelectorAll('.cart-item');
+            let subtotal = 0;
+            let itemCount = 0;
+
+            cartItems.forEach(item => {
+                const quantity = parseInt(item.querySelector('.quantity').textContent);
+                const price = parseFloat(item.dataset.price);
+                subtotal += price * quantity;
+                itemCount += quantity;
+            });
+
+            const tax = subtotal * 0.1; // 10% tax
+            const total = subtotal + tax;
+
+            // Update order summary
+            document.querySelector('.subtotal').textContent = `Subtotal (${itemCount} items)`;
+            document.querySelector('.subtotal-amount').textContent = `$${subtotal.toFixed(2)}`;
+            document.querySelector('.tax-amount').textContent = `$${tax.toFixed(2)}`;
+            document.querySelector('.total-amount').textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Quantity buttons
+        document.querySelectorAll('.quantity-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const item = this.closest('.cart-item');
+                const quantityEl = item.querySelector('.quantity');
+                let quantity = parseInt(quantityEl.textContent);
+
+                if (this.dataset.action === 'increase') {
+                    quantity++;
+                } else if (this.dataset.action === 'decrease' && quantity > 1) {
+                    quantity--;
+                }
+
+                quantityEl.textContent = quantity;
+                updateCartTotal();
+            });
+        });
+
+        // Remove items
+        document.querySelectorAll('.remove-item').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const item = this.closest('.cart-item');
+                item.remove();
+                updateCartTotal();
+
+                // Check if cart is empty
+                const cartItems = document.querySelectorAll('.cart-item');
+                if (cartItems.length === 0) {
+                    document.querySelector('.empty-cart').classList.remove('hidden');
+                    document.querySelector('.checkout-btn').style.display = 'none';
+                }
+            });
+        });
+
+        // Initialize cart total
+        updateCartTotal();
+    </script>
+</body>
+</html></content>
+<parameter name="filePath">c:\Users\oianl\Desktop\progetto sportiello\ISTANT-KEY-progetto-scolastico-\shopping_cart.html
