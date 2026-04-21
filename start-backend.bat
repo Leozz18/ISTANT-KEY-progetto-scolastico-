@@ -1,0 +1,9 @@
+@echo off
+echo 🚀 Avvio INSTANT KEY Backend Server...
+cd backend
+if not exist node_modules (
+    echo 📦 Installazione dipendenze...
+    npm install
+)
+echo 🗄️  Inizializzazione database...
+npm start
