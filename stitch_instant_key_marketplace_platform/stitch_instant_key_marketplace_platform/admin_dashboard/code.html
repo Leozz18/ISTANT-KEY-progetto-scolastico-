@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#003d42",
+                    "primary-dim": "#00ec3b",
+                    "primary": "#9cff93",
+                    "tertiary-fixed": "#0eeafd",
+                    "on-error-container": "#ffd2c8",
+                    "on-primary-container": "#005a10",
+                    "on-secondary-fixed": "#003a42",
+                    "on-surface": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005c64",
+                    "surface-variant": "#262627",
+                    "primary-fixed-dim": "#00ec3b",
+                    "surface": "#0e0e0f",
+                    "surface-tint": "#9cff93",
+                    "on-secondary": "#004d57",
+                    "secondary-fixed-dim": "#00d7f0",
+                    "primary-container": "#00fc40",
+                    "tertiary-dim": "#00dbec",
+                    "on-tertiary": "#005b63",
+                    "tertiary-container": "#0eeafd",
+                    "on-error": "#450900",
+                    "background": "#0e0e0f",
+                    "error": "#ff7351",
+                    "inverse-surface": "#fcf8f9",
+                    "on-primary": "#006413",
+                    "outline-variant": "#484849",
+                    "secondary-container": "#006875",
+                    "on-primary-fixed-variant": "#006513",
+                    "error-dim": "#d53d18",
+                    "on-secondary-container": "#e8fbff",
+                    "surface-container": "#1a191b",
+                    "primary-fixed": "#00fc40",
+                    "tertiary": "#8af2ff",
+                    "on-tertiary-container": "#005159",
+                    "surface-bright": "#2c2c2d",
+                    "surface-container-highest": "#262627",
+                    "surface-container-high": "#201f21",
+                    "error-container": "#b92902",
+                    "on-primary-fixed": "#00440a",
+                    "tertiary-fixed-dim": "#00dbec",
+                    "surface-dim": "#0e0e0f",
+                    "surface-container-lowest": "#000000",
+                    "on-surface-variant": "#adaaab",
+                    "secondary": "#00e3fd",
+                    "inverse-primary": "#006f16",
+                    "surface-container-low": "#131314",
+                    "on-secondary-fixed-variant": "#005964",
+                    "on-background": "#ffffff",
+                    "secondary-dim": "#00d4ec",
+                    "inverse-on-surface": "#565556",
+                    "outline": "#767576",
+                    "secondary-fixed": "#26e6ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e0e0f;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-gradient {
+            background: linear-gradient(180deg, rgba(156, 255, 147, 0.1) 0%, rgba(156, 255, 147, 0) 100%);
+        }
+        .heat-map-cell {
+            transition: transform 0.15s ease-out;
+        }
+        .heat-map-cell:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen overflow-hidden">
+<!-- SideNavBar Component -->
+<aside class="bg-[#121213] text-[#adaaab] font-['Inter'] text-sm tracking-wide flex flex-col h-screen w-64 p-4 gap-2 border-r border-white/5 shrink-0 z-50">
+<!-- Brand Branding -->
+<div class="flex items-center gap-3 px-2 mb-8 mt-2">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-xl">bolt</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[#00FF41] font-black uppercase text-xs">Admin Portal</span>
+<span class="text-[10px] opacity-50 uppercase tracking-widest">System Controller</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-1 grow">
+<!-- Active: Dashboard -->
+<a class="flex items-center gap-3 px-3 py-2.5 bg-[#00FF41]/10 text-[#00FF41] rounded-lg transition-all duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#adaaab] hover:bg-[#1a1a1b] hover:text-white rounded-lg transition-all duration-150" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#adaaab] hover:bg-[#1a1a1b] hover:text-white rounded-lg transition-all duration-150" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span>Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#adaaab] hover:bg-[#1a1a1b] hover:text-white rounded-lg transition-all duration-150" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#adaaab] hover:bg-[#1a1a1b] hover:text-white rounded-lg transition-all duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<!-- CTA & User Profile -->
+<div class="mt-auto pt-4 border-t border-white/5 flex flex-col gap-4">
+<button class="w-full bg-[#1a1a1b] text-white py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
+                Generate Report
+            </button>
+<div class="flex items-center gap-3 px-2">
+<img alt="Admin User Avatar" class="w-10 h-10 rounded-full border-2 border-primary/20" data-alt="Close-up studio portrait of a professional man in a dark hoodie with clean lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRkgoa6XMmr5Y9P4hNl2mkNTVVc-U7yxpolligdY7WSDmsoEbV1Xv5lHavbGsTflktJv_L4VUJrCJOF3O9n2CGh8Th_2EbRSQYdpZcYYBfLilx97O_4WLfgFq1h1OrgZz1M3iEyEY6JYYzNBz799WRCY0hUV4rpV6zPBGXRkg8uPb7y9P659FKRhhnwzG30Ok0kXOn6xP8uOtVpPr_JMB52wZHTO6Qh5Mc-qKg8ov4SP8YlS35RWa2rKDD6GbrnXoNbyt_TKDptvLU"/>
+<div class="flex flex-col">
+<span class="text-white text-xs font-bold">Admin User</span>
+<span class="text-[10px] text-on-surface-variant">Superuser Access</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 bg-surface overflow-y-auto custom-scrollbar relative">
+<!-- Header Overlay -->
+<header class="sticky top-0 z-40 bg-[#0e0e0f]/70 backdrop-blur-xl flex justify-between items-center w-full px-8 py-6">
+<div class="flex flex-col">
+<h1 class="text-3xl font-headline font-bold text-on-surface tracking-tighter">System Overview</h1>
+<p class="text-xs font-label uppercase text-on-surface-variant tracking-[0.05em]">Real-time Performance Metrics</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end mr-4">
+<span class="text-[10px] uppercase font-bold text-primary tracking-widest">Server Status</span>
+<span class="text-xs text-on-surface">OPERATIONAL // 99.9%</span>
+</div>
+<button class="p-2 bg-surface-container-highest rounded-lg hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 bg-surface-container-highest rounded-lg hover:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</header>
+<!-- Bento Grid Dashboard -->
+<div class="px-8 pb-12 grid grid-cols-12 gap-6 max-w-[1600px]">
+<!-- Daily Revenue Chart (8 cols) -->
+<section class="col-span-12 lg:col-span-8 bg-surface-container-low rounded-xl p-6 relative overflow-hidden group">
+<div class="flex justify-between items-center mb-8 relative z-10">
+<div class="flex flex-col">
+<span class="text-xs uppercase font-label tracking-widest text-on-surface-variant">Revenue Pulse</span>
+<h2 class="text-2xl font-headline font-bold text-white">$42,912.40 <span class="text-primary text-sm font-body font-normal ml-2">+12.4% Today</span></h2>
+</div>
+<div class="flex bg-surface-container-highest p-1 rounded-lg">
+<button class="px-3 py-1 text-[10px] uppercase font-bold text-primary">Live</button>
+<button class="px-3 py-1 text-[10px] uppercase font-bold text-on-surface-variant hover:text-white">24H</button>
+<button class="px-3 py-1 text-[10px] uppercase font-bold text-on-surface-variant hover:text-white">7D</button>
+</div>
+</div>
+<!-- Abstract Chart Representation -->
+<div class="h-64 flex items-end gap-1 relative">
+<div class="absolute inset-x-0 top-0 h-px bg-white/5"></div>
+<div class="absolute inset-x-0 top-1/4 h-px bg-white/5"></div>
+<div class="absolute inset-x-0 top-2/4 h-px bg-white/5"></div>
+<div class="absolute inset-x-0 top-3/4 h-px bg-white/5"></div>
+<!-- Dynamic Bars with kinetic feel -->
+<div class="flex-1 bg-primary/20 h-[40%] rounded-t-sm hover:bg-primary transition-all cursor-pointer"></div>
+<div class="flex-1 bg-primary/20 h-[60%] rounded-t-sm hover:bg-primary transition-all cursor-pointer"></div>
+<div class="flex-1 bg-primary/20 h-[55%] rounded-t-sm hover:bg-primary transition-all cursor-pointer"></div>
+<div class="flex-1 bg-primary/20 h-[80%] rounded-t-sm hover:bg-primary transition-all cursor-pointer"></div>
+<div class="flex-1 bg-primary/20 h-[70%] rounded-t-sm hover:bg-primary transition-all cursor-pointer"></div>
+<div class="flex-1 bg-primary/20 h-[90%] rounded-t-sm hover:bg-primary transition-all cursor-pointer"></div>
+<div class="flex-1 bg-primary/20 h-[85%] rounded-t-sm hover:bg-primary transition-all cursor-pointer"></div>
+<div class="flex-1 bg-primary/10 h-[60%] rounded-t-sm hover:bg-primary transition-all cursor-pointer"></div>
+<div class="flex-1 bg-primary/20 h-[40%] rounded-t-sm hover:bg-primary transition-all cursor-pointer"></div>
+<div class="flex-1 bg-primary/20 h-[50%] rounded-t-sm hover:bg-primary transition-all cursor-pointer"></div>
+<div class="flex-1 bg-primary/60 h-[95%] rounded-t-sm hover:bg-primary transition-all cursor-pointer"></div>
+<div class="flex-1 bg-primary/20 h-[70%] rounded-t-sm hover:bg-primary transition-all cursor-pointer"></div>
+<div class="flex-1 bg-primary/20 h-[60%] rounded-t-sm hover:bg-primary transition-all cursor-pointer"></div>
+<div class="flex-1 bg-primary/20 h-[45%] rounded-t-sm hover:bg-primary transition-all cursor-pointer"></div>
+</div>
+</section>
+<!-- Order Volume Heat Map (4 cols) -->
+<section class="col-span-12 lg:col-span-4 bg-surface-container-low rounded-xl p-6">
+<div class="mb-6">
+<span class="text-xs uppercase font-label tracking-widest text-on-surface-variant">Global Demand</span>
+<h2 class="text-xl font-headline font-bold text-white">Order Frequency</h2>
+</div>
+<div class="grid grid-cols-7 gap-2">
+<!-- Generating a 7x6 heat map grid -->
+<div class="heat-map-cell w-full aspect-square bg-primary/5 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/20 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/10 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/40 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/60 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/30 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/10 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/20 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/10 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/50 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/80 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/90 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/40 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/10 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/40 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/60 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/90 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/100 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/80 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/50 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/30 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/10 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/30 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/50 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/70 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/40 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/20 rounded-sm"></div>
+<div class="heat-map-cell w-full aspect-square bg-primary/5 rounded-sm"></div>
+</div>
+<div class="mt-6 flex justify-between text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+<span>Low Traffic</span>
+<span>Peak Velocity</span>
+</div>
+</section>
+<!-- Low Stock Alerts (7 cols) -->
+<section class="col-span-12 lg:col-span-7 bg-surface-container-low rounded-xl p-6">
+<div class="flex justify-between items-end mb-6">
+<div>
+<span class="text-xs uppercase font-label tracking-widest text-error">Inventory Critical</span>
+<h2 class="text-xl font-headline font-bold text-white">Low Stock Alerts</h2>
+</div>
+<a class="text-[10px] font-bold text-primary uppercase tracking-widest hover:underline" href="#">Manage All</a>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-4 bg-surface-container-high rounded-lg group hover:bg-surface-container-highest transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-error/10 flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-error">warning</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-white">Cyberpunk 2077: Phantom Liberty</span>
+<span class="text-[10px] uppercase text-on-surface-variant">SKU: CP-2077-PL-GOG</span>
+</div>
+</div>
+<div class="text-right">
+<span class="block text-error font-bold">3 Keys Left</span>
+<span class="text-[10px] text-on-surface-variant uppercase">Critical Threshold</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-high rounded-lg group hover:bg-surface-container-highest transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-error/10 flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-error">warning</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-white">Elden Ring: Shadow of the Erdtree</span>
+<span class="text-[10px] uppercase text-on-surface-variant">SKU: ER-SOE-STM</span>
+</div>
+</div>
+<div class="text-right">
+<span class="block text-error font-bold">12 Keys Left</span>
+<span class="text-[10px] text-on-surface-variant uppercase">Replenish Soon</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-high rounded-lg group hover:bg-surface-container-highest transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-error/10 flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-error">warning</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-white">Helldivers 2</span>
+<span class="text-[10px] uppercase text-on-surface-variant">SKU: HD2-PS5-GLB</span>
+</div>
+</div>
+<div class="text-right">
+<span class="block text-error font-bold">8 Keys Left</span>
+<span class="text-[10px] text-on-surface-variant uppercase">High Demand</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Support Tickets (5 cols) -->
+<section class="col-span-12 lg:col-span-5 bg-surface-container-low rounded-xl p-6">
+<div class="flex justify-between items-end mb-6">
+<div>
+<span class="text-xs uppercase font-label tracking-widest text-on-surface-variant">Active Queue</span>
+<h2 class="text-xl font-headline font-bold text-white">Recent Support</h2>
+</div>
+<span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase rounded">4 New</span>
+</div>
+<div class="space-y-4">
+<div class="border-l-2 border-primary pl-4 py-1">
+<div class="flex justify-between items-start">
+<span class="text-xs font-bold text-white">Key Invalid: Order #8271</span>
+<span class="text-[10px] text-on-surface-variant uppercase">2m ago</span>
+</div>
+<p class="text-[11px] text-on-surface-variant mt-1 line-clamp-1">User reports key was already redeemed on Steam...</p>
+<div class="flex items-center gap-2 mt-2">
+<div class="w-4 h-4 bg-surface-container-highest rounded-full overflow-hidden">
+<img alt="User" data-alt="Close-up of a diverse young man's face looking directly at camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARgTbWRdpkDs-axrBCiC1IEA9QV1N5LT_dUz3pywcIZ3T8Amqb673aht1l-HMeyPNCDpt3l68CKmvhzVfrvjV-vdsfBXMngl_Rrj4ziBFc-ssUQlNvu6GE_0DZom0DJZ57d9DzsPKGmIXvMSJWS9PS-cDxYF0jQRQt-e2kp9WhlOk0wBW5d5iPMFup31xW4EUDyltGDrxJmJ3YjcAU_3eZy9JAfZYYKgYHUPFM2wSSgZ7CgGRPlvAVFDyMmp0WVujQp4QgJGDoZNga"/>
+</div>
+<span class="text-[10px] text-on-surface">Alex_Gamer99</span>
+</div>
+</div>
+<div class="border-l-2 border-secondary pl-4 py-1">
+<div class="flex justify-between items-start">
+<span class="text-xs font-bold text-white">Refund Request: Order #8265</span>
+<span class="text-[10px] text-on-surface-variant uppercase">15m ago</span>
+</div>
+<p class="text-[11px] text-on-surface-variant mt-1 line-clamp-1">Bought wrong regional version, requesting global...</p>
+<div class="flex items-center gap-2 mt-2">
+<div class="w-4 h-4 bg-surface-container-highest rounded-full overflow-hidden">
+<img alt="User" data-alt="Portrait of a smiling woman with glasses in a professional setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpadVWVH_RnSuSwSUSkKbFi7Sz3s6hI2Id6RPVYZP6kVHvk2mkOo5qgCLRb09ag06DTBDEK6uA5rNyb_bBZD02S4Qu8mFKxe7FmMw1bNrQfKIGSWM8X5e4zVFFE2FWdDV3sWJFeCTO7CrKsmJhUEjlJe4jzw0oI3S24W96h81TzFVIOwGrIow3TYR77qaPcAHJF8CQNsHn1uRk7jZefGo_Zj--VLduHBBLIaiBbtVrS83lkAXWwYKZMbgQ3-nLqqA4JqEO_seuUVUR"/>
+</div>
+<span class="text-[10px] text-on-surface">Sarah.Jenkins</span>
+</div>
+</div>
+<div class="border-l-2 border-white/10 pl-4 py-1 opacity-60">
+<div class="flex justify-between items-start">
+<span class="text-xs font-bold text-white">General Inquiry: API Access</span>
+<span class="text-[10px] text-on-surface-variant uppercase">1h ago</span>
+</div>
+<p class="text-[11px] text-on-surface-variant mt-1 line-clamp-1">Interest in bulk purchasing via automated script...</p>
+<div class="flex items-center gap-2 mt-2">
+<div class="w-4 h-4 bg-surface-container-highest rounded-full overflow-hidden">
+<img alt="User" data-alt="Middle-aged man in a suit with a neutral expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW3K_FfA3RWw61g7AVuMMF1k9IEScTkR4YnGZ7L9MZTAYx3Ny10pn5wdsAnPjiSpCBrNblwgLrXy6sPWgBGwgHtlsu60FRVlsBHmP52O9cbirOUAG-W7M4om4GO9aV9E_wUw1gK4IrOBzEJMi_G_PRT7Slk-lH-tLWIEZaP8gdOgaY5lmsqAGX6CyVepSdr8MYqGQT3SWXBPeFwx7Z-2xRJYpCfGKNl_uKi3TGBaxCSgYSohfO44DqTaBbwE7tQUDtHtKjWc4zzDxk"/>
+</div>
+<span class="text-[10px] text-on-surface">DigitalResell_LTD</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- System Stats Footer Section -->
+<section class="px-8 pb-12">
+<div class="grid grid-cols-4 gap-6">
+<div class="bg-surface-container-low p-4 rounded-xl border border-white/5">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Active Users</span>
+<div class="flex items-end justify-between mt-1">
+<span class="text-2xl font-headline font-bold">1,284</span>
+<span class="text-xs text-primary font-bold">+5%</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl border border-white/5">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Total Keys</span>
+<div class="flex items-end justify-between mt-1">
+<span class="text-2xl font-headline font-bold">15,902</span>
+<span class="text-xs text-on-surface-variant font-bold">Stable</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl border border-white/5">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Orders / Hr</span>
+<div class="flex items-end justify-between mt-1">
+<span class="text-2xl font-headline font-bold">82.5</span>
+<span class="text-xs text-primary font-bold">+18%</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl border border-white/5">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Bot Mitigation</span>
+<div class="flex items-end justify-between mt-1">
+<span class="text-2xl font-headline font-bold">99.2%</span>
+<span class="text-xs text-secondary font-bold">Active</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Component -->
+<footer class="bg-[#0e0e0f] text-[#00FF41] font-['Inter'] text-xs uppercase tracking-[0.05em] w-full mt-12 border-t border-white/10 py-8 px-8 flex flex-col items-center gap-6">
+<div class="flex gap-8">
+<a class="text-[#adaaab] hover:text-white transition-opacity duration-150" href="#">Support</a>
+<a class="text-[#adaaab] hover:text-white transition-opacity duration-150" href="#">Privacy Policy</a>
+<a class="text-[#adaaab] hover:text-white transition-opacity duration-150" href="#">Terms of Service</a>
+<a class="text-[#adaaab] hover:text-white transition-opacity duration-150" href="#">Refunds</a>
+<a class="text-[#adaaab] hover:text-white transition-opacity duration-150" href="#">Contact</a>
+</div>
+<div class="text-[#adaaab] text-[10px] text-center">
+                © 2024 INSTANT KEY. HIGH-PERFORMANCE DIGITAL DELIVERY.
+            </div>
+</footer>
+</main>
+</body></html>

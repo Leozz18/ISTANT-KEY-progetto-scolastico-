@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#003d42",
+                    "primary-dim": "#00ec3b",
+                    "primary": "#9cff93",
+                    "tertiary-fixed": "#0eeafd",
+                    "on-error-container": "#ffd2c8",
+                    "on-primary-container": "#005a10",
+                    "on-secondary-fixed": "#003a42",
+                    "on-surface": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005c64",
+                    "surface-variant": "#262627",
+                    "primary-fixed-dim": "#00ec3b",
+                    "surface": "#0e0e0f",
+                    "surface-tint": "#9cff93",
+                    "on-secondary": "#004d57",
+                    "secondary-fixed-dim": "#00d7f0",
+                    "primary-container": "#00fc40",
+                    "tertiary-dim": "#00dbec",
+                    "on-tertiary": "#005b63",
+                    "tertiary-container": "#0eeafd",
+                    "on-error": "#450900",
+                    "background": "#0e0e0f",
+                    "error": "#ff7351",
+                    "inverse-surface": "#fcf8f9",
+                    "on-primary": "#006413",
+                    "outline-variant": "#484849",
+                    "secondary-container": "#006875",
+                    "on-primary-fixed-variant": "#006513",
+                    "error-dim": "#d53d18",
+                    "on-secondary-container": "#e8fbff",
+                    "surface-container": "#1a191b",
+                    "primary-fixed": "#00fc40",
+                    "tertiary": "#8af2ff",
+                    "on-tertiary-container": "#005159",
+                    "surface-bright": "#2c2c2d",
+                    "surface-container-highest": "#262627",
+                    "surface-container-high": "#201f21",
+                    "error-container": "#b92902",
+                    "on-primary-fixed": "#00440a",
+                    "tertiary-fixed-dim": "#00dbec",
+                    "surface-dim": "#0e0e0f",
+                    "surface-container-lowest": "#000000",
+                    "on-surface-variant": "#adaaab",
+                    "secondary": "#00e3fd",
+                    "inverse-primary": "#006f16",
+                    "surface-container-low": "#131314",
+                    "on-secondary-fixed-variant": "#005964",
+                    "on-background": "#ffffff",
+                    "secondary-dim": "#00d4ec",
+                    "inverse-on-surface": "#565556",
+                    "outline": "#767576",
+                    "secondary-fixed": "#26e6ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {},
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .headline { font-family: 'Space Grotesk', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 z-50 w-full bg-[#0e0e0f]/70 backdrop-blur-xl shadow-2xl">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-[1920px] mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-bold tracking-tighter text-[#00FF41] font-['Space_Grotesk']">INSTANT KEY</span>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#adaaab] font-['Space_Grotesk'] tracking-tight hover:text-[#00FF41] transition-colors duration-150 ease-out" href="#">PC</a>
+<a class="text-[#adaaab] font-['Space_Grotesk'] tracking-tight hover:text-[#00FF41] transition-colors duration-150 ease-out" href="#">Console</a>
+<a class="text-[#adaaab] font-['Space_Grotesk'] tracking-tight hover:text-[#00FF41] transition-colors duration-150 ease-out" href="#">Software</a>
+<a class="text-[#adaaab] font-['Space_Grotesk'] tracking-tight hover:text-[#00FF41] transition-colors duration-150 ease-out" href="#">Subscription</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-surface-container-highest px-4 py-2 rounded-lg gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-64 placeholder:text-on-surface-variant" placeholder="Search catalog..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-[#adaaab] hover:text-[#00FF41] transition-transform active:scale-95">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="text-[#adaaab] hover:text-[#00FF41] transition-transform active:scale-95">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<main class="pt-24 min-h-screen">
+<div class="max-w-[1920px] mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Sidebar / Filters -->
+<aside class="md:col-span-3 lg:col-span-2 space-y-8 sticky top-28 self-start">
+<div class="flex items-center justify-between">
+<h2 class="font-headline font-bold text-lg text-primary uppercase tracking-widest">Filters</h2>
+<button class="text-xs uppercase text-on-surface-variant hover:text-primary tracking-widest transition-colors">Clear All</button>
+</div>
+<!-- Platform Filter -->
+<div class="space-y-4">
+<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Platform</h3>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 text-xs font-bold bg-secondary-container text-on-secondary-container rounded-sm border border-secondary/20 hover:border-secondary transition-colors">Steam</button>
+<button class="px-3 py-1.5 text-xs font-bold bg-surface-container-high text-on-surface-variant rounded-sm border border-outline-variant/20 hover:border-outline-variant transition-colors">PSN</button>
+<button class="px-3 py-1.5 text-xs font-bold bg-surface-container-high text-on-surface-variant rounded-sm border border-outline-variant/20 hover:border-outline-variant transition-colors">Xbox</button>
+<button class="px-3 py-1.5 text-xs font-bold bg-surface-container-high text-on-surface-variant rounded-sm border border-outline-variant/20 hover:border-outline-variant transition-colors">Epic</button>
+</div>
+</div>
+<!-- Genre Filter -->
+<div class="space-y-4">
+<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Genre</h3>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 bg-surface-container-highest border border-outline-variant rounded-sm group-hover:border-primary transition-colors"></div>
+<span class="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Action</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 bg-primary-container border border-primary-container rounded-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] text-on-primary-container font-black">check</span>
+</div>
+<span class="text-sm text-on-surface">RPG</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 bg-surface-container-highest border border-outline-variant rounded-sm group-hover:border-primary transition-colors"></div>
+<span class="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Strategy</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 bg-surface-container-highest border border-outline-variant rounded-sm group-hover:border-primary transition-colors"></div>
+<span class="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Shooter</span>
+</label>
+</div>
+</div>
+<!-- Price Range -->
+<div class="space-y-4">
+<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Price Range</h3>
+<div class="relative h-1 bg-surface-container-highest rounded-full">
+<div class="absolute left-0 right-1/4 h-full bg-primary"></div>
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full"></div>
+<div class="absolute right-1/4 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full"></div>
+</div>
+<div class="flex justify-between text-xs text-on-surface-variant font-mono">
+<span>$0</span>
+<span>$75</span>
+</div>
+</div>
+<!-- Rating -->
+<div class="space-y-4">
+<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Rating</h3>
+<div class="space-y-2">
+<button class="flex items-center gap-1 text-primary-dim">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg">star</span>
+<span class="text-xs text-on-surface-variant ml-2">&amp; up</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<section class="md:col-span-9 lg:col-span-10">
+<!-- Sorting & View Controls -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+<div class="flex items-center gap-4">
+<h1 class="font-headline text-3xl font-bold tracking-tighter">DIGITAL CATALOG</h1>
+<span class="px-2 py-0.5 bg-surface-container-high text-[10px] font-black text-primary border border-primary/10 rounded uppercase tracking-tighter">142 Results</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant tracking-[0.1em]">Sort By:</span>
+<select class="bg-surface-container-low border-none text-sm font-bold focus:ring-1 ring-primary/20 rounded px-3 py-1 cursor-pointer">
+<option>Popularity</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>Newest</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Bento-ish Grid Layout -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Game Card 1 (Large/Featured) -->
+<div class="sm:col-span-2 lg:col-span-2 row-span-1 group relative bg-surface-container-low overflow-hidden rounded-lg transition-all duration-300">
+<div class="aspect-[21/9] w-full relative">
+<img class="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" data-alt="cinematic scene from a sci-fi open world game with futuristic neon cityscape and cyborg character under rain at night" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzka4s3L97jdtYP-fZOYh7D9fyynI-5_JfCvLwO-OauhW4VyLrEF39seU_SOVwXjBBowl5QVbRytiotiZ5vBZoRTE4U6KMDSp-u1FCy_zuLc2p0RYlyKIx-kFoy7fBGV06FP7Cx8p1na58KwXtSt9c5P3pTfWJVior4gFeJ2VDRIlzv1LAS_bE2F5kmnm7cmy2UQXx_fHUvRAZvVnAgY4tRJ3lqtSX7cKnNO5F3ovK4HdYytSywLJsuD8DktC6-ebGIKdrCuM8knnd"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent"></div>
+<div class="absolute top-4 left-4">
+<span class="bg-primary px-3 py-1 text-[10px] font-black text-on-primary-container rounded uppercase tracking-tighter">-25% OFF</span>
+</div>
+</div>
+<div class="p-6 flex justify-between items-end">
+<div>
+<div class="flex gap-2 mb-2">
+<span class="text-[9px] font-black uppercase text-secondary tracking-widest">Global Key</span>
+<span class="text-[9px] font-black uppercase text-on-surface-variant tracking-widest">Steam</span>
+</div>
+<h3 class="font-headline text-2xl font-bold tracking-tight">CYBERPUNK 2077: PHANTOM LIBERTY</h3>
+</div>
+<div class="text-right">
+<div class="text-xs text-on-surface-variant line-through">$59.99</div>
+<div class="text-2xl font-black text-primary tracking-tighter">$44.99</div>
+</div>
+</div>
+</div>
+<!-- Regular Card 2 -->
+<div class="group bg-surface-container-low rounded-lg overflow-hidden flex flex-col hover:bg-surface-container-high transition-all duration-150">
+<div class="aspect-[3/4] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="dramatic close up of a dark fantasy knight in ornate black armor with glowing red eyes and heavy cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2qtzicbdY0N1HOOuvBUlvr2h08l-0Un-sgiGE-TTo7CISzLQIk1H4DICwKdBUHIEtIAPf1wSM169U2ajdeGYmiq653Dt9ysloMEdrPU1Fpee-eg3RMMKHdqPY2lEEZ6b4lOXBqK2P-u3f-rOolwXCFrXwer3B0hHeLS1gOA7PxojZ3uDLzgx-CEkLzhkVe73155SfFYwAmfQcAT7JpC_1oHKcBLYyC-Z82gtEYfVo8IDr1yrkPr7S0vOEtuLG0DCsF2YLZ5dH8YP-"/>
+<div class="absolute top-3 left-3 bg-error text-[9px] font-black px-2 py-0.5 rounded tracking-tighter">-15%</div>
+</div>
+<div class="p-4 flex flex-col gap-4 flex-grow">
+<div>
+<span class="text-[9px] font-black uppercase text-on-surface-variant tracking-[0.1em]">PlayStation 5</span>
+<h4 class="text-sm font-bold mt-1 line-clamp-1">ELDEN RING: SHADOW OF ERDTREE</h4>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant line-through">$39.99</span>
+<span class="text-lg font-black text-white">$33.99</span>
+</div>
+<button class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Regular Card 3 -->
+<div class="group bg-surface-container-low rounded-lg overflow-hidden flex flex-col hover:bg-surface-container-high transition-all duration-150">
+<div class="aspect-[3/4] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="minimalist 3d render of retro gaming hardware and pixel art icons with vaporwave aesthetic colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqQSdBIDZcrdu3O5mz6n60VsyzvqB_H4hIPU684jkidvb3To-1y5Ex4JejpoojFFw-pBSTeP0YRr15ehO7zlxEmJroTL8jlzfhu-uNRVrl2MeBTqTUc42D57i_cdjKjV5LkARL1-TIj_T7zOaZrYLjSCseW5JFZS2tbBkUPrwOTBOibes-YCbKpJfyMlme6grmJ1c_JgbGnW1-1wXuvkLyH1Xmcb17UacjCIcGKtKN62Ky0XCamvoeerDey5po8EXNXwQ7UpBEgKb6"/>
+<div class="absolute top-3 left-3 bg-primary text-[9px] font-black px-2 py-0.5 rounded tracking-tighter">HOT</div>
+</div>
+<div class="p-4 flex flex-col gap-4 flex-grow">
+<div>
+<span class="text-[9px] font-black uppercase text-on-surface-variant tracking-[0.1em]">Xbox Series X</span>
+<h4 class="text-sm font-bold mt-1 line-clamp-1">HALO INFINITE - CAMPAIGN</h4>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant line-through">$59.99</span>
+<span class="text-lg font-black text-white">$19.99</span>
+</div>
+<button class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Regular Card 4 -->
+<div class="group bg-surface-container-low rounded-lg overflow-hidden flex flex-col hover:bg-surface-container-high transition-all duration-150">
+<div class="aspect-[3/4] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="atmospheric racing game screen with a high performance sports car speeding through a desert at sunset with motion blur" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx4776zxAIjVcJjGvA1QQ7aymwT312iAkxjPfIR0QePvqZCus5-PDi-6BzP06xsrvBs4jB5jEnEoYniTamQWTntdPibntxdJ3shbwoAgyxskS31RoXm23qcATyw8tLH58Qnf427C6dIABf18eLNtY1mE4ZynR9rQVFaBlTExt_eUjDymlPdUIUEpuH0LoBuqiWXmBbWup2Nmx8h0Hwh3gly6W-P5YTmdWiVL6XMgWauCT0LJZLKaJUXzJ3iVw-01GaC6MEBwWMYNP7"/>
+</div>
+<div class="p-4 flex flex-col gap-4 flex-grow">
+<div>
+<span class="text-[9px] font-black uppercase text-on-surface-variant tracking-[0.1em]">Steam Key</span>
+<h4 class="text-sm font-bold mt-1 line-clamp-1">FORZA HORIZON 5: PREMIUM</h4>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-lg font-black text-white">$49.99</span>
+</div>
+<button class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Regular Card 5 -->
+<div class="group bg-surface-container-low rounded-lg overflow-hidden flex flex-col hover:bg-surface-container-high transition-all duration-150">
+<div class="aspect-[3/4] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="first person shooter game environment with hyper-realistic tactical gear and weapons in an industrial setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2J1EyH-txtvam75kFv633uloFTCJgoHHSAPuQ0KChqkeHOBRf6mmm-4P-vpvbc3bbXr05GA4d2kWEy6dMpR_RxNl8nycpM8-0Xx33HhYKt7FAZwQPbkqsRCgLPsFihs86hiS6OCmS8ASnAM6G8bI_MiYEyAyNGRtO6dfNCJdwqVw77PvFPm8xgjqw76r4WtvZiQmVft0Pn-sjHRcHtrkH8jtNoQjrElOmLt7Z3Qw9Ey2Yrv6EkKwnnsdboyuhWepNqcIJ36aTZwjA"/>
+<div class="absolute top-3 left-3 bg-secondary text-[9px] font-black px-2 py-0.5 rounded tracking-tighter">-50%</div>
+</div>
+<div class="p-4 flex flex-col gap-4 flex-grow">
+<div>
+<span class="text-[9px] font-black uppercase text-on-surface-variant tracking-[0.1em]">Epic Games</span>
+<h4 class="text-sm font-bold mt-1 line-clamp-1">CALL OF DUTY: MODERN WARFARE III</h4>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant line-through">$69.99</span>
+<span class="text-lg font-black text-white">$34.99</span>
+</div>
+<button class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Regular Card 6 -->
+<div class="group bg-surface-container-low rounded-lg overflow-hidden flex flex-col hover:bg-surface-container-high transition-all duration-150">
+<div class="aspect-[3/4] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="overhead view of a tactical strategy game with miniature units and hexagonal grid map in a lush forest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQhFxEzTrPuR0GmcroUjARwztamo8jLhUMaVMyELVMsjw35y_YGZtjCOY0RzqpSml8eieYoxgbQYlAWU3QSABLKPYZrJe7o1SOtjR2FnQjHsbcyVneYaoigDEtVIqUPUg9ir2cs52fUXmE8GZFQBelWBoe_DXpfOxXQRW14cXtVzTDkjrGkFaHFchyBXtUU2mRTGYlrLzXmZdP84O6WRozJEsTYbr0_694JnHmFLGPqpyjXvzitHKrNiloBUBaWBaKbAx6CIa6bLEj"/>
+</div>
+<div class="p-4 flex flex-col gap-4 flex-grow">
+<div>
+<span class="text-[9px] font-black uppercase text-on-surface-variant tracking-[0.1em]">Steam</span>
+<h4 class="text-sm font-bold mt-1 line-clamp-1">CIVILIZATION VII - DELUXE</h4>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-lg font-black text-white">$89.99</span>
+</div>
+<button class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Regular Card 7 -->
+<div class="group bg-surface-container-low rounded-lg overflow-hidden flex flex-col hover:bg-surface-container-high transition-all duration-150">
+<div class="aspect-[3/4] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="high contrast digital art of a dark wizard character with magical energy sparks and mystical atmospheric lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJat6QzFK9SlmekHd9dIFeBJSAQx5HVstff54cvhIKiuguA8BtysWmAmNXgWGNNybIgcjCw-MOkq0KWDAw3TtuK05FFrhDFN3YgMbdLgthI89deSFQoIHWz3xvGa2w8O2QdvLAGMgV-ngwXCgUlXOvwtIviUITrFuumc-MCuEjf7vJYYJYZjsIKKS662Zi9iEOAhwQ_MzJFclAqDoSys3goH2l5ufu3wpkSvdRPlHFRovN_-wdmXeZvmGuBUk-Iw1PtlXBrhwe9vuf"/>
+</div>
+<div class="p-4 flex flex-col gap-4 flex-grow">
+<div>
+<span class="text-[9px] font-black uppercase text-on-surface-variant tracking-[0.1em]">Global Steam</span>
+<h4 class="text-sm font-bold mt-1 line-clamp-1">DIABLO IV: VESSEL OF HATRED</h4>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-lg font-black text-white">$39.99</span>
+</div>
+<button class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Regular Card 8 -->
+<div class="group bg-surface-container-low rounded-lg overflow-hidden flex flex-col hover:bg-surface-container-high transition-all duration-150">
+<div class="aspect-[3/4] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="pixel art style illustration of a cozy fantasy town at sunset with soft lighting and vibrant colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGT4rINbjyN2pVhjC-LP38VJiw20QAS44edd8iYvjPofjMH4jw9zJc0BRl2zEnWdV3iIwBqWy5oxPeNtw7x311SP8Opdi3ef-2dPx2iPjoRe6MjtGPggbxOS09ilubB977fUzEku_Al0srLG0xxpKAS9UfDqxQhF-ydjpAq0FILuRVd31t_TbpbQBHE7ppuFiFuFMGmCKr2c5Vbio2pZs14F57bCdvjnGYW52WNb4aOUseYLmryLkqwFQs4l9N3FgoMpVDn1LRqFCr"/>
+<div class="absolute top-3 left-3 bg-primary text-[9px] font-black px-2 py-0.5 rounded tracking-tighter">-80%</div>
+</div>
+<div class="p-4 flex flex-col gap-4 flex-grow">
+<div>
+<span class="text-[9px] font-black uppercase text-on-surface-variant tracking-[0.1em]">Indie Steam</span>
+<h4 class="text-sm font-bold mt-1 line-clamp-1">STARDEW VALLEY</h4>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant line-through">$14.99</span>
+<span class="text-lg font-black text-white">$2.99</span>
+</div>
+<button class="w-10 h-10 bg-surface-container-highest rounded flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-16 flex justify-center items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded bg-primary text-on-primary font-black">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container-high transition-colors font-bold">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container-high transition-colors font-bold">3</button>
+<span class="px-2">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container-high transition-colors font-bold">12</button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-20 bg-[#0e0e0f] border-t border-white/10">
+<div class="flex flex-col items-center py-12 px-8 gap-8 max-w-[1920px] mx-auto">
+<div class="flex flex-col items-center gap-4">
+<span class="text-[#00FF41] font-bold text-2xl tracking-tighter font-['Space_Grotesk']">INSTANT KEY</span>
+<p class="text-[#adaaab] font-['Inter'] text-xs uppercase tracking-[0.05em] text-center max-w-md">
+                    © 2024 INSTANT KEY. HIGH-PERFORMANCE DIGITAL DELIVERY. 
+                    Your source for immediate access to the world's best gaming titles.
+                </p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-[#adaaab] font-['Inter'] text-xs uppercase tracking-[0.05em] hover:text-white transition-opacity duration-150" href="#">Support</a>
+<a class="text-[#adaaab] font-['Inter'] text-xs uppercase tracking-[0.05em] hover:text-white transition-opacity duration-150" href="#">Privacy Policy</a>
+<a class="text-[#adaaab] font-['Inter'] text-xs uppercase tracking-[0.05em] hover:text-white transition-opacity duration-150" href="#">Terms of Service</a>
+<a class="text-[#adaaab] font-['Inter'] text-xs uppercase tracking-[0.05em] hover:text-white transition-opacity duration-150" href="#">Refunds</a>
+<a class="text-[#adaaab] font-['Inter'] text-xs uppercase tracking-[0.05em] hover:text-white transition-opacity duration-150" href="#">Contact</a>
+</div>
+<div class="flex gap-4 opacity-50">
+<img alt="Visa" class="h-4 filter grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4Y439cnp136fVY2s3cuHssHRY7ejvalGUwTk1aXzTAjouUp7I2BrCfx4QuQfbCcMVd2KrjWlxrP2hVvne3GjcURPTogfJGfGo_WNoWQOmx2TZD4h1bSup7h8U4-OR3Ui55oEEls2C-jyC5qlMWiUzf-wQnOAItrlvMLBpPFnLu_k0J_42hTWfjfQeei3eFmOizzC-ZqFDH50KYZnnmVO_4k5z-fevcJCPk2QFyC1_dRjDOeIX5XvmH_KHC5WTGad7bXls8L_4Nzly"/>
+<img alt="Mastercard" class="h-6 filter grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTW0SRvAKbLWGi1Gx0FkIoS4q_3t15s1zyRCadv5jEFwLliDti-enfhwZV-u3suEsidMlN04gSHEmYHy-jC-HR_CgojJrnhio4TBYGOI2y3CI-UbA_NfU6QpnaPu2MX1JDr9OLW2XBwJJ8hfNw7_Di7XCA_kwQ8UWo95k8Y5K9FL-VzI4Ktw08fDE0ICn58tQvNTwTjqamjU2g66S9fGQ3Nb5sHPrlFY0xqkz4pZGh6IU8Jbsz_6sAovqbpwTl2Nv0RwNeK8ICg0bm"/>
+<img alt="PayPal" class="h-4 filter grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC4R9VAZuqJ2uzWEyEaLPab7Ne9ByAk13vtkA3ep7j8D-j0Kasz1c6hOHvneGrvcmnYIUqQQ3d1c3mGf35a8aDojYNtqyZ3dnJ9qwLB3egcGHMxdFRBv-d2P5xQ-kiSdfoPhqXEgW41jSy1r7DsCn5Iaz0BuYd4ZINOHyMUUs4tv9XMlCgcCTNNfGynIigxR0PG7s6NYymcyTiDCea59KDfo4cBLfhycYHyyDGQI7ALLlw4r3vAAkxKiTdVo6YSd6jKO2NSJUGnsR8"/>
+</div>
+</div>
+</footer>
+</body></html>
