@@ -1,6 +1,6 @@
-# INSTANT KEY - Gaming Marketplace
+# INSTANT KEY - Gaming Marketplace (Laravel + React + Inertia.js)
 
-A modern, fully-functional digital gaming marketplace with complete backend API, advanced animations, and seamless user experience. Built with HTML5, Tailwind CSS, vanilla JavaScript, Node.js, Express.js, and SQLite database.
+Complete rebuild of the INSTANT KEY gaming marketplace using modern web technologies with Laravel 11, React 18, and Inertia.js.
 
 ## 🚀 Features
 
@@ -37,17 +37,17 @@ A modern, fully-functional digital gaming marketplace with complete backend API,
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **HTML5**: Semantic markup and accessibility
-- **Tailwind CSS**: Utility-first CSS framework with custom configuration
-- **Vanilla JavaScript**: Modern ES6+ with async/await, modules, and classes
-- **Custom Design System**: Neon Velocity theme with consistent components
-- **CSS Animations**: Keyframes, transforms, and Intersection Observer API
+- **React 18**: Modern UI library
+- **Inertia.js**: Server-side rendering framework
+- **Tailwind CSS**: Utility-first CSS framework
+- **Vite**: Lightning-fast build tool
+- **Axios**: HTTP client for API communication
 
 ### Backend
-- **Node.js**: JavaScript runtime for server-side development
-- **Express.js**: Web framework for RESTful API development
-- **SQLite3**: Local SQL database with complete schema
-- **JWT**: JSON Web Tokens for secure authentication
+- **Laravel 11**: Modern PHP framework
+- **Laravel Sanctum**: API authentication
+- **SQLite**: Lightweight database
+- **Eloquent ORM**: Database abstraction layer
 - **bcrypt**: Password hashing for security
 - **express-validator**: Input validation and sanitization
 - **CORS & Helmet**: Security middleware for API protection

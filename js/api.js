@@ -39,7 +39,8 @@ class InstantKeyAPI {
     async getProducts(filters = {}) {
         const queryParams = new URLSearchParams(filters);
         const response = await fetch(`${this.baseURL}/products?${queryParams}`);
-        return await response.json();
+        const data = await response.json();
+        return data.products || data;
     }
 
     async getProduct(id) {

@@ -561,7 +561,7 @@
                     // Try to load from API
                     const filters = { ...currentFilters, page, limit: 12 };
                     const response = await window.InstantKeyAPI.getProducts(filters);
-                    products = response || [];
+                    products = Array.isArray(response) ? response : (response?.products || []);
                 }
 
                 if (products.length === 0 && !append) {
